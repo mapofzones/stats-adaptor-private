@@ -3,7 +3,3 @@ spring:
     url: jdbc:postgresql://<ip>:<port>/change_db
     username: changeme
     password: changeme
-
-  flyway:
-    encoding: UTF-8
-    enabled: false
