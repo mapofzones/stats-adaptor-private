@@ -3,3 +3,6 @@ spring:
     url: jdbc:postgresql://<ip>:<port>/change_db
     username: changeme
     password: changeme
+    hikari:
+      data-source-properties:
+        stringtype: unspecified

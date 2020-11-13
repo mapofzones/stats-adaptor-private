@@ -2,13 +2,10 @@ package com.mapofzones.adaptor.data.entities;
 
 import org.springframework.lang.NonNull;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "header", schema = "public")
+@Table(name = "headers", schema = "public")
 public class Header {
     @Id
     @Column(name = "timeframe", unique = true)

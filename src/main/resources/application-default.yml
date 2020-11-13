@@ -3,3 +3,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/moz_main_db
     username: postgres
     password: changeme
+    hikari:
+      data-source-properties:
+        stringtype: unspecified

@@ -16,6 +16,7 @@ public class Processor {
         System.out.println("Hello world!");
         Header header = headerRepository.getHeaderByTimeframe(10000, 1000);
         System.out.println(header);
+        headerRepository.save(header);
         System.out.println("---------------");
     }
 }
