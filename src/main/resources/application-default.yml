@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/moz_main_db
+    username: postgres
+    password: changeme
+
+  flyway:
+    encoding: UTF-8
+    baseline-on-migrate: true
