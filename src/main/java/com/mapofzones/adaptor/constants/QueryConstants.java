@@ -12,6 +12,7 @@ public class QueryConstants {
             "    stats.top_zone_pair\n" +
             "from " +
             "    get_total_stats(:timeframe, :chart_step) stats";
+
     public static final String GET_ZONES_STATS_BY_TIMEFRAME = "" +
             "select\n" +
             "    :timeframe as timeframe,\n" +
@@ -41,6 +42,45 @@ public class QueryConstants {
             "    stats.ibc_tx_out_weight\n" +
             "from\n" +
             "    get_full_stats_for_each_zone(:timeframe, :chart_step) stats";
+
+    public static final String GET_GRAPHS_BY_TIMEFRAME = "" +
+            "with zones_full_graph as (\n" +
+            "  select\n" +
+            "    distinct zone_src as source,\n" +
+            "    zone_dest as target\n" +
+            "  from\n" +
+            "    ibc_transfer_hourly_stats -- where\n" +
+            "    -- hour > (CURRENT_TIMESTAMP at time zone 'utc') - make_interval(hours => period_in_hours)\n" +
+            "),\n" +
+            "zones_single_graph as (\n" +
+            "  select\n" +
+            "    distinct source as source,\n" +
+            "    target as target\n" +
+            "  from\n" +
+            "    (\n" +
+            "      select\n" +
+            "        source as source,\n" +
+            "        target as target\n" +
+            "      from\n" +
+            "        zones_full_graph\n" +
+            "      union all\n" +
+            "      select\n" +
+            "        target as source,\n" +
+            "        source as target\n" +
+            "      from\n" +
+            "        zones_full_graph\n" +
+            "    ) as double_graph\n" +
+            "  where\n" +
+            "    source < target\n" +
+            ")\n" +
+            "\n" +
+            "\n" +
+            "select\n" +
+            "    :timeframe as timeframe," +
+            "    source,\n" +
+            "    target\n" +
+            "from\n" +
+            "  zones_single_graph";
 
     private QueryConstants() {
     }
