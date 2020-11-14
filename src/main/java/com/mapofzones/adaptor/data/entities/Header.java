@@ -35,17 +35,4 @@ public class Header {
     @Column(name = "top_zone_pair")
     @NonNull
     private String topZonePair;
-
-    @Override
-    public String toString() {
-        return "Header{" +
-                "timeframe=" + timeframe +
-                ", zonesCountAll=" + zonesCountAll +
-                ", channelsCountAll=" + channelsCountAll +
-                ", zonesCountPeriod=" + zonesCountPeriod +
-                ", channelsCountPeriod=" + channelsCountPeriod +
-                ", chart='" + chart + '\'' +
-                ", topZonePair='" + topZonePair + '\'' +
-                '}';
-    }
 }
