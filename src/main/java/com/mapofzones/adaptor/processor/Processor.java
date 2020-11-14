@@ -9,6 +9,7 @@ import com.mapofzones.adaptor.data.repository.HeaderRepository;
 import com.mapofzones.adaptor.data.repository.ZonesStatsRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,41 +27,27 @@ public class Processor {
     public void doScript() {
         System.out.println("Starting...");
 
-        Header header = headerRepository.getHeaderByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP);
-        headerRepository.save(header);
-        System.out.println("header TF " + TimeframeConstants.DAY);
-
-        header = headerRepository.getHeaderByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP);
-        headerRepository.save(header);
-        System.out.println("header TF " + TimeframeConstants.WEEK);
-
-        header = headerRepository.getHeaderByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP);
-        headerRepository.save(header);
-        System.out.println("header TF " + TimeframeConstants.MONTH);
+        List<Header> headers = new ArrayList<>();
+        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP));
+        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP));
+        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP));
+        System.out.println("ready to save headers");
+        headerRepository.saveAll(headers);
+        System.out.println("Header adaptor finished!");
 
         List<ZoneStats> zonesStats = zonesStatsRepository.getZonesStatsByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP);
+        zonesStats.addAll(zonesStatsRepository.getZonesStatsByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP));
+        zonesStats.addAll(zonesStatsRepository.getZonesStatsByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP));
+        System.out.println("ready to save zones_stats");
         zonesStatsRepository.saveAll(zonesStats);
-        System.out.println("zones_stats TF " + TimeframeConstants.DAY);
-
-        zonesStats = zonesStatsRepository.getZonesStatsByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP);
-        zonesStatsRepository.saveAll(zonesStats);
-        System.out.println("zones_stats TF " + TimeframeConstants.WEEK);
-
-        zonesStats = zonesStatsRepository.getZonesStatsByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP);
-        zonesStatsRepository.saveAll(zonesStats);
-        System.out.println("zones_stats TF " + TimeframeConstants.MONTH);
+        System.out.println("zones_stats adaptor finished!");
 
         List<Graph> graphs = graphRepository.getGraphsByTimeframe(TimeframeConstants.DAY);
+        graphs.addAll(graphRepository.getGraphsByTimeframe(TimeframeConstants.WEEK));
+        graphs.addAll(graphRepository.getGraphsByTimeframe(TimeframeConstants.MONTH));
+        System.out.println("ready to save graphs");
         graphRepository.saveAll(graphs);
-        System.out.println("graphs TF " + TimeframeConstants.DAY);
-
-        graphs = graphRepository.getGraphsByTimeframe(TimeframeConstants.WEEK);
-        graphRepository.saveAll(graphs);
-        System.out.println("graphs TF " + TimeframeConstants.WEEK);
-
-        graphs = graphRepository.getGraphsByTimeframe(TimeframeConstants.MONTH);
-        graphRepository.saveAll(graphs);
-        System.out.println("graphs TF " + TimeframeConstants.MONTH);
+        System.out.println("graphs adaptor finished!");
 
         System.out.println("Finished!");
         System.out.println("---------------");
