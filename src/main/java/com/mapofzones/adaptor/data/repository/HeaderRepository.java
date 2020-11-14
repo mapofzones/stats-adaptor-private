@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface HeaderRepository extends JpaRepository<Header, Integer> {
     @Query(value = QueryConstants.GET_HEADER_BY_TIMEFRAME, nativeQuery = true)
-    Header getHeaderByTimeframe(@Param(value = "timeframe") int id, @Param(value = "chart_step") int chartStep);
+    Header getHeaderByTimeframe(@Param(value = "timeframe") int timeframe, @Param(value = "chart_step") int chartStep);
 }
