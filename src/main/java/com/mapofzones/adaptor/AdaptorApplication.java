@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 public class AdaptorApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(AdaptorApplication.class, args);
+		SpringApplication.run(AdaptorApplication.class, args);
 	}
 
 	@Bean
