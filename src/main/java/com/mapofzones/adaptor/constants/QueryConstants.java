@@ -1,7 +1,7 @@
 package com.mapofzones.adaptor.constants;
 
-public class QueryConstants {
-    public static final String GET_HEADER_BY_TIMEFRAME = "" +
+public interface QueryConstants {
+    String GET_HEADER_BY_TIMEFRAME = "" +
             "select \n" +
             "    :timeframe as \"timeframe\",\n" +
             "    stats.zones_cnt_all,\n" +
@@ -13,7 +13,7 @@ public class QueryConstants {
             "from " +
             "    get_total_stats(:timeframe, :chart_step) stats";
 
-    public static final String GET_ZONES_STATS_BY_TIMEFRAME = "" +
+    String GET_ZONES_STATS_BY_TIMEFRAME = "" +
             "select\n" +
             "    :timeframe as timeframe,\n" +
             "    stats.zone,\n" +
@@ -43,7 +43,7 @@ public class QueryConstants {
             "from\n" +
             "    get_full_stats_for_each_zone(:timeframe, :chart_step) stats";
 
-    public static final String GET_GRAPHS_BY_TIMEFRAME = "" +
+    String GET_GRAPHS_BY_TIMEFRAME = "" +
             "with zones_full_graph as (\n" +
             "  select\n" +
             "    distinct zone_src as source,\n" +
@@ -81,7 +81,4 @@ public class QueryConstants {
             "    target\n" +
             "from\n" +
             "  zones_single_graph";
-
-    private QueryConstants() {
-    }
 }
