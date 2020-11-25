@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://<ip>:<port>/change_db
-    username: changeme
-    password: changeme
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
     hikari:
       data-source-properties:
         stringtype: unspecified
