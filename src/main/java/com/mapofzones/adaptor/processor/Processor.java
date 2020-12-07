@@ -8,6 +8,7 @@ import com.mapofzones.adaptor.data.repository.GraphRepository;
 import com.mapofzones.adaptor.data.repository.HeaderRepository;
 import com.mapofzones.adaptor.data.repository.ZonesStatsRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class Processor {
         this.graphRepository = graphRepository;
     }
 
+    @Transactional
     public void doScript() {
         System.out.println("Starting...");
 
