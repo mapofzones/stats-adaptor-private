@@ -20,4 +20,4 @@ Running directly:
 
 Running in a container:
 * `docker build -t stats-adaptor:v1 .`
-* `docker run -it -d --network="host" stats-adaptor:v1`
+* `docker run --env DB_URL=jdbc:postgresql://<ip>:<port>/<db> --env DB_USER=<db_user> --env DB_PASS=<db_user_pass> -it -d --network="host" stats-adaptor:v1`
