@@ -39,7 +39,13 @@ public interface QueryConstants {
             "    stats.total_ibc_txs_weight,\n" +
             "    stats.total_txs_weight,\n" +
             "    stats.ibc_tx_in_weight,\n" +
-            "    stats.ibc_tx_out_weight\n" +
+            "    stats.ibc_tx_out_weight,\n" +
+            "    stats.ibc_tx_failed,\n" +
+            "    stats.ibc_tx_failed_diff,\n" +
+            "    stats.total_active_addresses,\n" +
+            "    stats.total_active_addresses_diff,\n" +
+            "    stats.total_active_addresses_rating,\n" +
+            "    stats.total_active_addresses_rating_diff\n" +
             "from\n" +
             "    get_full_stats_for_each_zone(:timeframe, :chart_step) stats";
 

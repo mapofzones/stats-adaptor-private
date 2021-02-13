@@ -109,4 +109,28 @@ public class ZoneStats {
     @Column(name = "ibc_tx_out_weight ")
     @NonNull
     private Double ibcTxOutWeight;
+
+    @Column(name = "ibc_tx_failed")
+    @NonNull
+    private Integer ibcTxFailed;
+
+    @Column(name = "ibc_tx_failed_diff")
+    @NonNull
+    private Integer ibcTxFailedDiff;
+
+    @Column(name = "total_active_addresses")
+    @NonNull
+    private Integer totalActiveAddresses;
+
+    @Column(name = "total_active_addresses_diff")
+    @NonNull
+    private Integer totalActiveAddressesDiff;
+
+    @Column(name = "total_active_addresses_rating")
+    @NonNull
+    private Integer totalActiveAddressesRating;
+
+    @Column(name = "total_active_addresses_rating_diff")
+    @NonNull
+    private Integer totalActiveAddressesRatingDiff;
 }
