@@ -3,6 +3,7 @@ package com.mapofzones.adaptor.data.entities;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 
 @Entity
 @IdClass(ZoneStatsKey.class)
@@ -133,4 +134,12 @@ public class ZoneStats {
     @Column(name = "total_active_addresses_rating_diff")
     @NonNull
     private Integer totalActiveAddressesRatingDiff;
+
+    @Column(name = "total_coin_turnover_amount")
+    @NonNull
+    private BigInteger totalCoinTurnoverAmount;
+
+    @Column(name = "total_coin_turnover_amount_diff")
+    @NonNull
+    private BigInteger totalCoinTurnoverAmountDiff;
 }

@@ -45,7 +45,9 @@ public interface QueryConstants {
             "    stats.total_active_addresses,\n" +
             "    stats.total_active_addresses_diff,\n" +
             "    stats.total_active_addresses_rating,\n" +
-            "    stats.total_active_addresses_rating_diff\n" +
+            "    stats.total_active_addresses_rating_diff,\n" +
+            "    stats.total_coin_turnover_amount,\n" +
+            "    stats.total_coin_turnover_amount_diff\n" +
             "from\n" +
             "    get_full_stats_for_each_zone(:timeframe, :chart_step) stats";
 
