@@ -1,6 +1,29 @@
 package com.mapofzones.adaptor.constants;
 
 public interface QueryConstants {
+    String GET_CHANNELS_STATS = "" +
+            "select\n" +
+            "    zone,\n" +
+            "    client_id,\n" +
+            "    connection_id,\n" +
+            "    channel_id,\n" +
+            "    zone_counerparty,\n" +
+            "    is_opened,\n" +
+            "    ibc_tx_1d,\n" +
+            "    ibc_tx_1d_diff,\n" +
+            "    ibc_tx_1d_failed,\n" +
+            "    ibc_tx_1d_failed_diff,\n" +
+            "    ibc_tx_7d,\n" +
+            "    ibc_tx_7d_diff,\n" +
+            "    ibc_tx_7d_failed,\n" +
+            "    ibc_tx_7d_failed_diff,\n" +
+            "    ibc_tx_30d,\n" +
+            "    ibc_tx_30d_diff,\n" +
+            "    ibc_tx_30d_failed,\n" +
+            "    ibc_tx_30d_failed_diff\n" +
+            "from\n" +
+            "    public.get_chanels_stats()";
+
     String GET_HEADER_BY_TIMEFRAME = "" +
             "select \n" +
             "    :timeframe as \"timeframe\",\n" +

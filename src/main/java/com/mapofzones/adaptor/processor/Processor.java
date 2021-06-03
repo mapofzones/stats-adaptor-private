@@ -1,9 +1,11 @@
 package com.mapofzones.adaptor.processor;
 
 import com.mapofzones.adaptor.constants.TimeframeConstants;
+import com.mapofzones.adaptor.data.entities.Channel;
 import com.mapofzones.adaptor.data.entities.Graph;
 import com.mapofzones.adaptor.data.entities.Header;
 import com.mapofzones.adaptor.data.entities.ZoneStats;
+import com.mapofzones.adaptor.data.repository.ChannelRepository;
 import com.mapofzones.adaptor.data.repository.GraphRepository;
 import com.mapofzones.adaptor.data.repository.HeaderRepository;
 import com.mapofzones.adaptor.data.repository.ZonesStatsRepository;
@@ -17,11 +19,14 @@ public class Processor {
     private final HeaderRepository headerRepository;
     private final ZonesStatsRepository zonesStatsRepository;
     private final GraphRepository graphRepository;
+    private final ChannelRepository channelRepository;
 
-    public Processor(HeaderRepository headerRepository, ZonesStatsRepository zonesStatsRepository, GraphRepository graphRepository) {
+    public Processor(HeaderRepository headerRepository, ZonesStatsRepository zonesStatsRepository,
+                     GraphRepository graphRepository, ChannelRepository channelRepository) {
         this.headerRepository = headerRepository;
         this.zonesStatsRepository = zonesStatsRepository;
         this.graphRepository = graphRepository;
+        this.channelRepository = channelRepository;
     }
 
     public void doScript() {
@@ -48,6 +53,11 @@ public class Processor {
         System.out.println("ready to save graphs");
         graphRepository.saveAll(graphs);
         System.out.println("graphs adaptor finished!");
+
+        List<Channel> channels = channelRepository.getChannelsStats();
+        System.out.println("ready to save channels");
+        channelRepository.saveAll(channels);
+        System.out.println("channels adaptor finished!");
 
         System.out.println("Finished!");
         System.out.println("---------------");
