@@ -111,6 +111,10 @@ public class ZoneStats {
     @NonNull
     private Double ibcTxOutWeight;
 
+    @Column(name = "total_active_addresses_weight")
+    @NonNull
+    private Double totalActiveAddressesWeight;
+
     @Column(name = "ibc_tx_failed")
     @NonNull
     private Integer ibcTxFailed;

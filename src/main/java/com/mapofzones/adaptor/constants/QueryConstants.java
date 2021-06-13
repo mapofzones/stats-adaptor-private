@@ -63,6 +63,7 @@ public interface QueryConstants {
             "    stats.total_txs_weight,\n" +
             "    stats.ibc_tx_in_weight,\n" +
             "    stats.ibc_tx_out_weight,\n" +
+            "    stats.total_active_addresses_weight,\n" +
             "    stats.ibc_tx_failed,\n" +
             "    stats.ibc_tx_failed_diff,\n" +
             "    stats.total_active_addresses,\n" +
