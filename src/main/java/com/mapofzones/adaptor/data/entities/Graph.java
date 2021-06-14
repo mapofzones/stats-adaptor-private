@@ -22,4 +22,16 @@ public class Graph {
     @Column(name = "target")
     @NonNull
     private String targetZone;
+
+    @Column(name = "channels_cnt_open")
+    @NonNull
+    private Integer channelsCntOpen;
+
+    @Column(name = "channels_cnt_active")
+    @NonNull
+    private Integer channelsCntActive;
+
+    @Column(name = "channels_percent_active")
+    @NonNull
+    private Double channelsPercentActive;
 }
