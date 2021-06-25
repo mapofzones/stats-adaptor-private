@@ -71,7 +71,9 @@ public interface QueryConstants {
             "    stats.total_active_addresses_rating,\n" +
             "    stats.total_active_addresses_rating_diff,\n" +
             "    stats.total_coin_turnover_amount,\n" +
-            "    stats.total_coin_turnover_amount_diff\n" +
+            "    stats.total_coin_turnover_amount_diff,\n" +
+            "    stats.ibc_tx_in_failed,\n" +
+            "    stats.ibc_tx_out_failed\n" +
             "from\n" +
             "    get_full_stats_for_each_zone(:timeframe, :chart_step) stats";
 

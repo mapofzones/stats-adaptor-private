@@ -146,4 +146,12 @@ public class ZoneStats {
     @Column(name = "total_coin_turnover_amount_diff")
     @NonNull
     private BigInteger totalCoinTurnoverAmountDiff;
+
+    @Column(name = "ibc_tx_in_failed")
+    @NonNull
+    private Integer ibcTxInFailed;
+
+    @Column(name = "ibc_tx_out_failed")
+    @NonNull
+    private Integer ibcTxOutFailed;
 }
