@@ -154,4 +154,67 @@ public class ZoneStats {
     @Column(name = "ibc_tx_out_failed")
     @NonNull
     private Integer ibcTxOutFailed;
+
+    @Column(name = "zone_label_url")
+    private String zoneLabelUrl;
+
+    @Column(name = "is_zone_mainnet")
+    @NonNull
+    private Boolean isZoneMainnet;
+
+    @Column(name = "is_zone_new")
+    @NonNull
+    private Boolean isZoneNew;
+
+    @Column(name = "is_zone_up_to_date")
+    private Boolean isZoneUpToDate;
+
+    @Column(name = "zone_readable_name")
+    @NonNull
+    private String zoneReadableName;
+
+    @Column(name = "ibc_tx_in_mainnet_rating")
+    private Integer ibcTxInMainnetRating;
+
+    @Column(name = "total_active_addresses_mainnet_weight")
+    private Double totalActiveAddressesMainnetWeight;
+
+    @Column(name = "total_active_addresses_mainnet_rating_diff")
+    private Integer totalActiveAddressesMainnetRatingDiff;
+
+    @Column(name = "total_active_addresses_mainnet_rating")
+    private Integer totalActiveAddressesMainnetRating;
+
+    @Column(name = "total_ibc_txs_mainnet_rating_diff")
+    private Integer totalIbcTxsMainnetRatingDiff;
+
+    @Column(name = "ibc_tx_out_mainnet_rating_diff")
+    private Integer ibcTxOutMainnetRatingDiff;
+
+    @Column(name = "total_txs_mainnet_rating_diff")
+    private Integer totalTxsMainnetRatingDiff;
+
+    @Column(name = "ibc_tx_in_mainnet_rating_diff")
+    private Integer ibcTxInMainnetRatingDiff;
+
+    @Column(name = "total_ibc_txs_mainnet_weight")
+    private Double totalIbcTxsMainnetWeight;
+
+    @Column(name = "total_ibc_txs_mainnet_rating")
+    private Integer totalIbcTxsMainnetRating;
+
+    @Column(name = "ibc_tx_out_mainnet_weight")
+    private Double ibcTxOutMainnetWeight;
+
+    @Column(name = "ibc_tx_out_mainnet_rating")
+    private Integer ibcTxOutMainnetRating;
+
+    @Column(name = "total_txs_mainnet_weight")
+    private Double totalTxsMainnetWeight;
+
+    @Column(name = "total_txs_mainnet_rating")
+    private Integer totalTxsMainnetRating;
+
+    @Column(name = "ibc_tx_in_mainnet_weight")
+    private Double ibcTxInMainnetWeight;
 }

@@ -73,7 +73,27 @@ public interface QueryConstants {
             "    stats.total_coin_turnover_amount,\n" +
             "    stats.total_coin_turnover_amount_diff,\n" +
             "    stats.ibc_tx_in_failed,\n" +
-            "    stats.ibc_tx_out_failed\n" +
+            "    stats.ibc_tx_out_failed,\n" +
+            "    stats.zone_label_url,\n" +
+            "    stats.is_zone_mainnet,\n" +
+            "    stats.is_zone_new,\n" +
+            "    stats.is_zone_up_to_date,\n" +
+            "    stats.zone_readable_name,\n" +
+            "    stats.ibc_tx_in_mainnet_rating,\n" +
+            "    stats.total_active_addresses_mainnet_weight,\n" +
+            "    stats.total_active_addresses_mainnet_rating_diff,\n" +
+            "    stats.total_active_addresses_mainnet_rating,\n" +
+            "    stats.total_ibc_txs_mainnet_rating_diff,\n" +
+            "    stats.ibc_tx_out_mainnet_rating_diff,\n" +
+            "    stats.total_txs_mainnet_rating_diff,\n" +
+            "    stats.ibc_tx_in_mainnet_rating_diff,\n" +
+            "    stats.total_ibc_txs_mainnet_weight,\n" +
+            "    stats.total_ibc_txs_mainnet_rating,\n" +
+            "    stats.ibc_tx_out_mainnet_weight,\n" +
+            "    stats.ibc_tx_out_mainnet_rating,\n" +
+            "    stats.total_txs_mainnet_weight,\n" +
+            "    stats.total_txs_mainnet_rating,\n" +
+            "    stats.ibc_tx_in_mainnet_weight\n" +
             "from\n" +
             "    get_full_stats_for_each_zone(:timeframe, :chart_step) stats";
 
