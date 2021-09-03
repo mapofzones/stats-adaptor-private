@@ -34,4 +34,8 @@ public class Graph {
     @Column(name = "channels_percent_active")
     @NonNull
     private Double channelsPercentActive;
+
+    @Column(name = "is_mainnet")
+    @NonNull
+    private Boolean isMainnet;
 }

@@ -109,7 +109,8 @@ public interface QueryConstants {
             "    target,\n" +
             "    channels_cnt_open,\n" +
             "    channels_cnt_active,\n" +
-            "    channels_percent_active\n" +
+            "    channels_percent_active,\n" +
+            "    is_mainnet\n" +
             "from\n" +
             "    public.get_zones_graphs(:timeframe)";
 }
