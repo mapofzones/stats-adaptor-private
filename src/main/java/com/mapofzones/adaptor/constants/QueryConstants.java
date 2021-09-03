@@ -20,7 +20,12 @@ public interface QueryConstants {
             "    ibc_tx_30d,\n" +
             "    ibc_tx_30d_diff,\n" +
             "    ibc_tx_30d_failed,\n" +
-            "    ibc_tx_30d_failed_diff\n" +
+            "    ibc_tx_30d_failed_diff,\n" +
+            "    zone_label_url,\n" +
+            "    zone_counterparty_label_url,\n" +
+            "    zone_readable_name,\n" +
+            "    zone_counterparty_readable_name,\n" +
+            "    is_zone_counerparty_mainnet\n" +
             "from\n" +
             "    public.get_chanels_stats()";
 

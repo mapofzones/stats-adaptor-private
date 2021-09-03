@@ -84,4 +84,22 @@ public class Channel {
     @Column(name = "ibc_tx_30d_failed_diff")
     @NonNull
     private Integer ibcTx30dFailedDiff;
+
+    @Column(name = "zone_label_url ")
+    private String zoneLabelUrl ;
+
+    @Column(name = "zone_counterparty_label_url ")
+    private String zoneCounterpartyLabelUrl ;
+
+    @Column(name = "zone_readable_name ")
+    @NonNull
+    private String zoneReadableName ;
+
+    @Column(name = "zone_counterparty_readable_name ")
+    @NonNull
+    private String zoneCounterpartyReadableName ;
+
+    @Column(name = "is_zone_counerparty_mainnet ")
+    @NonNull
+    private Boolean isZoneCounerpartyMainnet ;
 }
