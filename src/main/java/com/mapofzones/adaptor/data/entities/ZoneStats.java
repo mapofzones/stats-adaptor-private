@@ -217,4 +217,7 @@ public class ZoneStats {
 
     @Column(name = "ibc_tx_in_mainnet_weight")
     private Double ibcTxInMainnetWeight;
+
+    @Column(name = "zone_label_url2")
+    private String zoneLabelUrl2;
 }

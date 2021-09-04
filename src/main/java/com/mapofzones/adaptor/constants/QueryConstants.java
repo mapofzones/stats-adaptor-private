@@ -25,7 +25,9 @@ public interface QueryConstants {
             "    zone_counterparty_label_url,\n" +
             "    zone_readable_name,\n" +
             "    zone_counterparty_readable_name,\n" +
-            "    is_zone_counerparty_mainnet\n" +
+            "    is_zone_counerparty_mainnet,\n" +
+            "    zone_label_url2,\n" +
+            "    zone_counterparty_label_url2\n" +
             "from\n" +
             "    public.get_chanels_stats()";
 
@@ -98,7 +100,8 @@ public interface QueryConstants {
             "    stats.ibc_tx_out_mainnet_rating,\n" +
             "    stats.total_txs_mainnet_weight,\n" +
             "    stats.total_txs_mainnet_rating,\n" +
-            "    stats.ibc_tx_in_mainnet_weight\n" +
+            "    stats.ibc_tx_in_mainnet_weight,\n" +
+            "    stats.zone_label_url2\n" +
             "from\n" +
             "    get_full_stats_for_each_zone(:timeframe, :chart_step) stats";
 
