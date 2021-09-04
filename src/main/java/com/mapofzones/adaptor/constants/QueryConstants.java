@@ -39,7 +39,8 @@ public interface QueryConstants {
             "    stats.zones_cnt_period,\n" +
             "    stats.channels_cnt_period,\n" +
             "    stats.chart,\n" +
-            "    stats.top_zone_pair\n" +
+            "    stats.top_zone_pair,\n" +
+            "    false as is_mainnet_only\n" +
             "from " +
             "    get_total_stats(:timeframe, :chart_step) stats";
 

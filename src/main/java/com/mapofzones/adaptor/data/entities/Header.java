@@ -5,12 +5,18 @@ import org.springframework.lang.NonNull;
 import javax.persistence.*;
 
 @Entity
+@IdClass(HeaderKey.class)
 @Table(name = "headers", schema = "public")
 public class Header {
     @Id
-    @Column(name = "timeframe", unique = true)
+    @Column(name = "timeframe")
     @NonNull
     private Integer timeframe;
+
+    @Id
+    @Column(name = "is_mainnet_only")
+    @NonNull
+    public Boolean isMainnetOnly;
 
     @Column(name = "zones_cnt_all")
     @NonNull
