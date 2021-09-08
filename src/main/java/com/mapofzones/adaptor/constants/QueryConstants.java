@@ -40,9 +40,9 @@ public interface QueryConstants {
             "    stats.channels_cnt_period,\n" +
             "    stats.chart,\n" +
             "    stats.top_zone_pair,\n" +
-            "    false as is_mainnet_only\n" +
+            "    stats.is_mainnet_only\n" +
             "from " +
-            "    get_total_stats(:timeframe, :chart_step) stats";
+            "    get_total_stats(:timeframe, :chart_step, :is_mainnet_only) stats";
 
     String GET_ZONES_STATS_BY_TIMEFRAME = "" +
             "select\n" +

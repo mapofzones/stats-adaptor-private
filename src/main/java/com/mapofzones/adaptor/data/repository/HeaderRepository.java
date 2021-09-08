@@ -11,5 +11,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface HeaderRepository extends JpaRepository<Header, HeaderKey> {
     @Query(value = QueryConstants.GET_HEADER_BY_TIMEFRAME, nativeQuery = true)
-    Header getHeaderByTimeframe(@Param(value = "timeframe") int timeframe, @Param(value = "chart_step") int chartStep);
+    Header getHeaderByTimeframe(
+            @Param(value = "timeframe") int timeframe,
+            @Param(value = "chart_step") int chartStep,
+            @Param(value = "is_mainnet_only") boolean isMainnetOnly
+    );
 }

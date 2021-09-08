@@ -33,17 +33,12 @@ public class Processor {
         System.out.println("Starting...");
 
         List<Header> headers = new ArrayList<>();
-        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP));
-        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP));
-        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP));
-//        todo: header stub start
-        for (Header header : headers) {
-            header.isMainnetOnly = true;
-        }
-        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP));
-        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP));
-        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP));
-//        todo: header stub end
+        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, true));
+        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, true));
+        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP, true));
+        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, false));
+        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, false));
+        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP, false));
         System.out.println("ready to save headers");
         headerRepository.saveAll(headers);
         System.out.println("Header adaptor finished!");
