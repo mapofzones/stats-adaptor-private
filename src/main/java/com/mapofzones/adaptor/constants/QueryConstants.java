@@ -40,7 +40,10 @@ public interface QueryConstants {
             "    stats.channels_cnt_period,\n" +
             "    stats.chart,\n" +
             "    stats.top_zone_pair,\n" +
-            "    stats.is_mainnet_only\n" +
+            "    stats.is_mainnet_only,\n" +
+            "    stats.ibc_cashflow_period,\n" +
+            "    stats.ibc_cashflow_period_diff,\n" +
+            "    stats.top_ibc_cashflow_zone_pair\n" +
             "from " +
             "    get_total_stats(:timeframe, :chart_step, :is_mainnet_only) stats";
 

@@ -3,6 +3,7 @@ package com.mapofzones.adaptor.data.entities;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 
 @Entity
 @IdClass(HeaderKey.class)
@@ -41,4 +42,16 @@ public class Header {
     @Column(name = "top_zone_pair")
     @NonNull
     private String topZonePair;
+
+    @Column(name = "ibc_cashflow_period")
+    @NonNull
+    private BigInteger ibcCashflowPeriod;
+
+    @Column(name = "ibc_cashflow_period_diff")
+    @NonNull
+    private BigInteger ibcCashflowPeriodDiff;
+
+    @Column(name = "top_ibc_cashflow_zone_pair")
+    @NonNull
+    private String topIbcCashflowZonePair;
 }
