@@ -105,7 +105,35 @@ public interface QueryConstants {
             "    stats.total_txs_mainnet_weight,\n" +
             "    stats.total_txs_mainnet_rating,\n" +
             "    stats.ibc_tx_in_mainnet_weight,\n" +
-            "    stats.zone_label_url2\n" +
+            "    stats.zone_label_url2,\n" +
+            "    stats.cashflow as ibc_cashflow,\n" +
+            "    stats.cashflow_diff as ibc_cashflow_diff,\n" +
+            "    stats.ibc_cashflow_rating,\n" +
+            "    stats.ibc_cashflow_rating_diff,\n" +
+            "    stats.ibc_cashflow_weight,\n" +
+            "    stats.ibc_cashflow_mainnet_rating,\n" +
+            "    stats.ibc_cashflow_mainnet_rating_diff,\n" +
+            "    stats.ibc_cashflow_mainnet_weight,\n" +
+            "    stats.cashflow_in as ibc_cashflow_in,\n" +
+            "    stats.cashflow_in_percent as ibc_cashflow_in_percent,\n" +
+            "    stats.cashflow_out as ibc_cashflow_out,\n" +
+            "    stats.cashflow_out_percent as ibc_cashflow_out_percent,\n" +
+            "    stats.ibc_peers,\n" +
+            "    stats.ibc_peers_mainnet,\n" +
+            "    stats.cashflow_out_diff as ibc_cashflow_out_diff,\n" +
+            "    stats.ibc_cashflow_out_rating,\n" +
+            "    stats.ibc_cashflow_out_mainnet_rating,\n" +
+            "    stats.ibc_cashflow_out_weight,\n" +
+            "    stats.ibc_cashflow_out_mainnet_weight,\n" +
+            "    stats.ibc_cashflow_out_rating_diff,\n" +
+            "    stats.ibc_cashflow_out_mainnet_rating_diff,\n" +
+            "    stats.cashflow_in_diff as ibc_cashflow_in_diff,\n" +
+            "    stats.ibc_cashflow_in_rating,\n" +
+            "    stats.ibc_cashflow_in_mainnet_rating,\n" +
+            "    stats.ibc_cashflow_in_weight,\n" +
+            "    stats.ibc_cashflow_in_mainnet_weight,\n" +
+            "    stats.ibc_cashflow_in_rating_diff,\n" +
+            "    stats.ibc_cashflow_in_mainnet_rating_diff\n" +
             "from\n" +
             "    get_full_stats_for_each_zone(:timeframe, :chart_step) stats";
 

@@ -220,4 +220,88 @@ public class ZoneStats {
 
     @Column(name = "zone_label_url2")
     private String zoneLabelUrl2;
+
+    @Column(name = "ibc_cashflow")
+    private String ibcCashflow;
+
+    @Column(name = "ibc_cashflow_diff")
+    private String ibcCashflowDiff;
+
+    @Column(name = "ibc_cashflow_rating")
+    private String ibcCashflowRating;
+
+    @Column(name = "ibc_cashflow_rating_diff")
+    private String ibcCashflowRatingDiff;
+
+    @Column(name = "ibc_cashflow_weight")
+    private String ibcCashflowWeight;
+
+    @Column(name = "ibc_cashflow_mainnet_rating")
+    private String ibcCashflowMainnetRating;
+
+    @Column(name = "ibc_cashflow_mainnet_rating_diff")
+    private String ibcCashflowMainnetRatingDiff;
+
+    @Column(name = "ibc_cashflow_mainnet_weight")
+    private String ibcCashflowMainnetWeight;
+
+    @Column(name = "ibc_cashflow_in")
+    private String ibcCashflowIn;
+
+    @Column(name = "ibc_cashflow_in_percent")
+    private String ibcCashflowInPercent;
+
+    @Column(name = "ibc_cashflow_out")
+    private String ibcCashflowOut;
+
+    @Column(name = "ibc_cashflow_out_percent")
+    private String ibcCashflowOutPercent;
+
+    @Column(name = "ibc_peers")
+    private String ibcPeers;
+
+    @Column(name = "ibc_peers_mainnet")
+    private String ibcPeersMainnet;
+
+    @Column(name = "ibc_cashflow_out_diff")
+    private String ibcCashflowOutDiff;
+
+    @Column(name = "ibc_cashflow_out_rating")
+    private String ibcCashflowOutRating;
+
+    @Column(name = "ibc_cashflow_out_mainnet_rating")
+    private String ibcCashflowOutMainnetRating;
+
+    @Column(name = "ibc_cashflow_out_weight")
+    private String ibcCashflowOutWeight;
+
+    @Column(name = "ibc_cashflow_out_mainnet_weight")
+    private String ibcCashflowOutMainnetWeight;
+
+    @Column(name = "ibc_cashflow_out_rating_diff")
+    private String ibcCashflowOutRatingDiff;
+
+    @Column(name = "ibc_cashflow_out_mainnet_rating_diff")
+    private String ibcCashflowOutMainnetRatingDiff;
+
+    @Column(name = "ibc_cashflow_in_diff")
+    private String ibcCashflowInDiff;
+
+    @Column(name = "ibc_cashflow_in_rating")
+    private String ibcCashflowInRating;
+
+    @Column(name = "ibc_cashflow_in_mainnet_rating")
+    private String ibcCashflowInMainnetRating;
+
+    @Column(name = "ibc_cashflow_in_weight")
+    private String ibcCashflowInWeight;
+
+    @Column(name = "ibc_cashflow_in_mainnet_weight")
+    private String ibcCashflowInMainnetWeight;
+
+    @Column(name = "ibc_cashflow_in_rating_diff")
+    private String ibcCashflowInRatingDiff;
+
+    @Column(name = "ibc_cashflow_in_mainnet_rating_diff")
+    private String ibcCashflowInMainnetRatingDiff;
 }
