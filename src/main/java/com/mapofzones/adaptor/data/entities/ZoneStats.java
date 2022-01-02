@@ -222,86 +222,86 @@ public class ZoneStats {
     private String zoneLabelUrl2;
 
     @Column(name = "ibc_cashflow")
-    private String ibcCashflow;
+    private BigInteger ibcCashflow;
 
     @Column(name = "ibc_cashflow_diff")
-    private String ibcCashflowDiff;
+    private BigInteger ibcCashflowDiff;
 
     @Column(name = "ibc_cashflow_rating")
-    private String ibcCashflowRating;
+    private Integer ibcCashflowRating;
 
     @Column(name = "ibc_cashflow_rating_diff")
-    private String ibcCashflowRatingDiff;
+    private Integer ibcCashflowRatingDiff;
 
     @Column(name = "ibc_cashflow_weight")
-    private String ibcCashflowWeight;
+    private Double ibcCashflowWeight;
 
     @Column(name = "ibc_cashflow_mainnet_rating")
-    private String ibcCashflowMainnetRating;
+    private Integer ibcCashflowMainnetRating;
 
     @Column(name = "ibc_cashflow_mainnet_rating_diff")
-    private String ibcCashflowMainnetRatingDiff;
+    private Integer ibcCashflowMainnetRatingDiff;
 
     @Column(name = "ibc_cashflow_mainnet_weight")
-    private String ibcCashflowMainnetWeight;
+    private Double ibcCashflowMainnetWeight;
 
     @Column(name = "ibc_cashflow_in")
-    private String ibcCashflowIn;
+    private BigInteger ibcCashflowIn;
 
     @Column(name = "ibc_cashflow_in_percent")
-    private String ibcCashflowInPercent;
+    private Double ibcCashflowInPercent;
 
     @Column(name = "ibc_cashflow_out")
-    private String ibcCashflowOut;
+    private BigInteger ibcCashflowOut;
 
     @Column(name = "ibc_cashflow_out_percent")
-    private String ibcCashflowOutPercent;
+    private Double ibcCashflowOutPercent;
 
     @Column(name = "ibc_peers")
-    private String ibcPeers;
+    private Integer ibcPeers;
 
     @Column(name = "ibc_peers_mainnet")
-    private String ibcPeersMainnet;
+    private Integer ibcPeersMainnet;
 
     @Column(name = "ibc_cashflow_out_diff")
-    private String ibcCashflowOutDiff;
+    private BigInteger ibcCashflowOutDiff;
 
     @Column(name = "ibc_cashflow_out_rating")
-    private String ibcCashflowOutRating;
+    private Integer ibcCashflowOutRating;
 
     @Column(name = "ibc_cashflow_out_mainnet_rating")
-    private String ibcCashflowOutMainnetRating;
+    private Integer ibcCashflowOutMainnetRating;
 
     @Column(name = "ibc_cashflow_out_weight")
-    private String ibcCashflowOutWeight;
+    private Double ibcCashflowOutWeight;
 
     @Column(name = "ibc_cashflow_out_mainnet_weight")
-    private String ibcCashflowOutMainnetWeight;
+    private Double ibcCashflowOutMainnetWeight;
 
     @Column(name = "ibc_cashflow_out_rating_diff")
-    private String ibcCashflowOutRatingDiff;
+    private Integer ibcCashflowOutRatingDiff;
 
     @Column(name = "ibc_cashflow_out_mainnet_rating_diff")
-    private String ibcCashflowOutMainnetRatingDiff;
+    private Integer ibcCashflowOutMainnetRatingDiff;
 
     @Column(name = "ibc_cashflow_in_diff")
-    private String ibcCashflowInDiff;
+    private BigInteger ibcCashflowInDiff;
 
     @Column(name = "ibc_cashflow_in_rating")
-    private String ibcCashflowInRating;
+    private Integer ibcCashflowInRating;
 
     @Column(name = "ibc_cashflow_in_mainnet_rating")
-    private String ibcCashflowInMainnetRating;
+    private Integer ibcCashflowInMainnetRating;
 
     @Column(name = "ibc_cashflow_in_weight")
-    private String ibcCashflowInWeight;
+    private Double ibcCashflowInWeight;
 
     @Column(name = "ibc_cashflow_in_mainnet_weight")
-    private String ibcCashflowInMainnetWeight;
+    private Double ibcCashflowInMainnetWeight;
 
     @Column(name = "ibc_cashflow_in_rating_diff")
-    private String ibcCashflowInRatingDiff;
+    private Integer ibcCashflowInRatingDiff;
 
     @Column(name = "ibc_cashflow_in_mainnet_rating_diff")
-    private String ibcCashflowInMainnetRatingDiff;
+    private Integer ibcCashflowInMainnetRatingDiff;
 }

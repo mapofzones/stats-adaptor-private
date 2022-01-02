@@ -36,6 +36,7 @@ public class Processor {
     public void doScript() {
         System.out.println("Starting...");
 
+        System.out.println("ready to get headers");
         List<Header> headers = new ArrayList<>();
         headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, true));
         headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, true));
@@ -47,6 +48,7 @@ public class Processor {
         headerRepository.saveAll(headers);
         System.out.println("Header adaptor finished!");
 
+        System.out.println("ready to get zones_stats");
         List<ZoneStats> zonesStats = zonesStatsRepository.getZonesStatsByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP);
         zonesStats.addAll(zonesStatsRepository.getZonesStatsByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP));
         zonesStats.addAll(zonesStatsRepository.getZonesStatsByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP));
@@ -54,6 +56,7 @@ public class Processor {
         zonesStatsRepository.saveAll(zonesStats);
         System.out.println("zones_stats adaptor finished!");
 
+        System.out.println("ready to get graphs");
         List<Graph> graphs = graphRepository.getGraphsByTimeframe(TimeframeConstants.DAY);
         graphs.addAll(graphRepository.getGraphsByTimeframe(TimeframeConstants.WEEK));
         graphs.addAll(graphRepository.getGraphsByTimeframe(TimeframeConstants.MONTH));
@@ -61,11 +64,13 @@ public class Processor {
         graphRepository.saveAll(graphs);
         System.out.println("graphs adaptor finished!");
 
+        System.out.println("ready to get channels");
         List<Channel> channels = channelRepository.getChannelsStats();
         System.out.println("ready to save channels");
         channelRepository.saveAll(channels);
         System.out.println("channels adaptor finished!");
 
+        System.out.println("ready to get ft channels");
         List<FtChannel> ftChannels = ftChannelRepository.getFtChannelsStats(TimeframeConstants.DAY_STEP);
         ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.WEEK_STEP));
         ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.MONTH_STEP));
@@ -73,7 +78,7 @@ public class Processor {
         ftChannelRepository.saveAll(ftChannels);
         System.out.println("ft channels adaptor finished!");
 
-
+        System.out.println("ready to get ft channels groups");
         List<ZoneStatus> zoneStatusesList = zoneStatusRepository.getZoneStatuses();
         Map<String, ZoneStatus> zoneStatuses = new HashMap<>();
         for (ZoneStatus zoneStatus: zoneStatusesList) {
@@ -86,7 +91,6 @@ public class Processor {
 
         System.out.println("Finished!");
         System.out.println("---------------");
-        System.exit(0);
     }
 
     private List<FtChannelGroup> getFtChannelGroups(List<FtChannel> ftChannels, Map<String, ZoneStatus> zoneStatuses){
