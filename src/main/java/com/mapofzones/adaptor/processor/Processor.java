@@ -1,14 +1,8 @@
 package com.mapofzones.adaptor.processor;
 
 import com.mapofzones.adaptor.constants.TimeframeConstants;
-import com.mapofzones.adaptor.data.entities.Channel;
-import com.mapofzones.adaptor.data.entities.Graph;
-import com.mapofzones.adaptor.data.entities.Header;
-import com.mapofzones.adaptor.data.entities.ZoneStats;
-import com.mapofzones.adaptor.data.repository.ChannelRepository;
-import com.mapofzones.adaptor.data.repository.GraphRepository;
-import com.mapofzones.adaptor.data.repository.HeaderRepository;
-import com.mapofzones.adaptor.data.repository.ZonesStatsRepository;
+import com.mapofzones.adaptor.data.entities.*;
+import com.mapofzones.adaptor.data.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,13 +14,15 @@ public class Processor {
     private final ZonesStatsRepository zonesStatsRepository;
     private final GraphRepository graphRepository;
     private final ChannelRepository channelRepository;
+    private final FtChannelRepository ftChannelRepository;
 
     public Processor(HeaderRepository headerRepository, ZonesStatsRepository zonesStatsRepository,
-                     GraphRepository graphRepository, ChannelRepository channelRepository) {
+                     GraphRepository graphRepository, ChannelRepository channelRepository, FtChannelRepository ftChannelRepository) {
         this.headerRepository = headerRepository;
         this.zonesStatsRepository = zonesStatsRepository;
         this.graphRepository = graphRepository;
         this.channelRepository = channelRepository;
+        this.ftChannelRepository = ftChannelRepository;
     }
 
     public void doScript() {
@@ -61,6 +57,13 @@ public class Processor {
         System.out.println("ready to save channels");
         channelRepository.saveAll(channels);
         System.out.println("channels adaptor finished!");
+
+        List<FtChannel> ftChannels = ftChannelRepository.getFtChannelsStats(TimeframeConstants.DAY_STEP);
+        ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.WEEK_STEP));
+        ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.MONTH_STEP));
+        System.out.println("ready to save ft channels");
+        ftChannelRepository.saveAll(ftChannels);
+        System.out.println("ft channels adaptor finished!");
 
         System.out.println("Finished!");
         System.out.println("---------------");

@@ -148,4 +148,35 @@ public interface QueryConstants {
             "    is_mainnet\n" +
             "from\n" +
             "    public.get_zones_graphs(:timeframe)";
+
+    String GET_FT_CHANNELS_STATS = "" +
+            "select\n" +
+            "    zone,\n" +
+            "    client_id,\n" +
+            "    connection_id,\n" +
+            "    channel_id,\n" +
+            "    :timeframe as timeframe," +
+            "    zone_counerparty,\n" +
+            "    is_opened,\n" +
+            "    ibc_tx,\n" +
+            "    ibc_tx_diff,\n" +
+            "    ibc_tx_failed,\n" +
+            "    ibc_tx_failed_diff,\n" +
+            "    zone_label_url,\n" +
+            "    zone_counterparty_label_url,\n" +
+            "    zone_readable_name,\n" +
+            "    zone_counterparty_readable_name,\n" +
+            "    is_zone_counerparty_mainnet,\n" +
+            "    zone_label_url2,\n" +
+            "    zone_counterparty_label_url2,\n" +
+            "    zone_counterparty_channel_id,\n" +
+            "    zone_website,\n" +
+            "    ibc_cashflow_in,\n" +
+            "    ibc_cashflow_in_diff,\n" +
+            "    ibc_cashflow_out,\n" +
+            "    ibc_cashflow_out_diff,\n" +
+            "    ibc_tx_success_rate,\n" +
+            "    ibc_tx_success_rate_diff\n" +
+            "from\n" +
+            "    public.get_ft_chanels_stats(:timeframe)";
 }
