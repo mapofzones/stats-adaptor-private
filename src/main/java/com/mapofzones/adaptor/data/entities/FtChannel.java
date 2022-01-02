@@ -103,4 +103,120 @@ public class FtChannel {
 
     @Column(name = "ibc_tx_success_rate_diff")
     private Double ibcTxSuccessRateDiff;
+
+    @NonNull
+    public String getZone() {
+        return zone;
+    }
+
+    @NonNull
+    public String getClientId() {
+        return clientId;
+    }
+
+    @NonNull
+    public String getConnectionId() {
+        return connectionId;
+    }
+
+    @NonNull
+    public String getChannelId() {
+        return channelId;
+    }
+
+    @NonNull
+    public Integer getTimeframe() {
+        return timeframe;
+    }
+
+    @NonNull
+    public String getCounterpartyZone() {
+        return counterpartyZone;
+    }
+
+    @NonNull
+    public Boolean getOpened() {
+        return isOpened;
+    }
+
+    @NonNull
+    public Integer getIbcTx() {
+        return ibcTx;
+    }
+
+    @NonNull
+    public Integer getIbcTxDiff() {
+        return ibcTxDiff;
+    }
+
+    @NonNull
+    public Integer getIbcTxFailed() {
+        return ibcTxFailed;
+    }
+
+    @NonNull
+    public Integer getIbcTxFailedDiff() {
+        return ibcTxFailedDiff;
+    }
+
+    public String getZoneLabelUrl() {
+        return zoneLabelUrl;
+    }
+
+    public String getZoneCounterpartyLabelUrl() {
+        return zoneCounterpartyLabelUrl;
+    }
+
+    public String getZoneReadableName() {
+        return zoneReadableName;
+    }
+
+    public String getZoneCounterpartyReadableName() {
+        return zoneCounterpartyReadableName;
+    }
+
+    @NonNull
+    public Boolean getZoneCounerpartyMainnet() {
+        return isZoneCounerpartyMainnet;
+    }
+
+    public String getZoneLabelUrl2() {
+        return zoneLabelUrl2;
+    }
+
+    public String getZoneCounterpartyLabelUrl2() {
+        return zoneCounterpartyLabelUrl2;
+    }
+
+    public String getZoneCounterpartyChannelId() {
+        return zoneCounterpartyChannelId;
+    }
+
+    public String getZoneWebsite() {
+        return zoneWebsite;
+    }
+
+    public BigInteger getIbcCashflowIn() {
+        return ibcCashflowIn;
+    }
+
+    public BigInteger getIbcCashflowInDiff() {
+        return ibcCashflowInDiff;
+    }
+
+    public BigInteger getIbcCashflowOut() {
+        return ibcCashflowOut;
+    }
+
+    public BigInteger getIbcCashflowOutDiff() {
+        return ibcCashflowOutDiff;
+    }
+
+    public Double getIbcTxSuccessRate() {
+        return ibcTxSuccessRate;
+    }
+
+    public Double getIbcTxSuccessRateDiff() {
+        return ibcTxSuccessRateDiff;
+    }
 }

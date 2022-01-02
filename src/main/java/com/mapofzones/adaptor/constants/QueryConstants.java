@@ -179,4 +179,13 @@ public interface QueryConstants {
             "    ibc_tx_success_rate_diff\n" +
             "from\n" +
             "    public.get_ft_chanels_stats(:timeframe)";
+
+    String GET_ZONES_UP_TO_DATE_STATUS = "" +
+            "select\n" +
+            "    zones.chain_id as zone,\n" +
+            "    blocks_log.last_updated_at > (CURRENT_TIMESTAMP at time zone 'utc') - make_interval(hours => 1) as is_zone_up_to_date\n" +
+            "from\n" +
+            "    zones\n" +
+            "left join blocks_log\n" +
+            "    on zones.chain_id = blocks_log.zone";
 }
