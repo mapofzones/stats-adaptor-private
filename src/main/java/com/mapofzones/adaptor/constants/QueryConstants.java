@@ -156,7 +156,7 @@ public interface QueryConstants {
             "    connection_id,\n" +
             "    channel_id,\n" +
             "    :timeframe as timeframe," +
-            "    zone_counerparty,\n" +
+            "    zone_counerparty as zone_counterparty,\n" +
             "    is_opened,\n" +
             "    ibc_tx,\n" +
             "    ibc_tx_diff,\n" +
@@ -166,7 +166,7 @@ public interface QueryConstants {
             "    zone_counterparty_label_url,\n" +
             "    zone_readable_name,\n" +
             "    zone_counterparty_readable_name,\n" +
-            "    is_zone_counerparty_mainnet,\n" +
+            "    is_zone_counerparty_mainnet as is_zone_counterparty_mainnet,\n" +
             "    zone_label_url2,\n" +
             "    zone_counterparty_label_url2,\n" +
             "    zone_counterparty_channel_id,\n" +

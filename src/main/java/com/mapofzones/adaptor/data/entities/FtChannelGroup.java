@@ -19,7 +19,7 @@ public class FtChannelGroup {
     @NonNull
     private Integer timeframe;
 
-    @Column(name = "zone_counerparty")
+    @Column(name = "zone_counterparty")
     @NonNull
     private String counterpartyZone;
 
@@ -71,10 +71,26 @@ public class FtChannelGroup {
     @NonNull
     private Boolean isZoneCounterpartyUpToDate;
 
+    @Column(name = "is_zone_counterparty_mainnet")
+    @NonNull
+    private Boolean isZoneCounterpartyMainnet;
+
+    @Column(name = "zone_readable_name")
+    private String zoneReadableName;
+
+    @Column(name = "zone_counterparty_readable_name")
+    private String zoneCounterpartyReadableName;
+
     public FtChannelGroup() {
     }
 
-    public FtChannelGroup(@NonNull String zone, @NonNull Integer timeframe, @NonNull String counterpartyZone, String zoneLabelUrl, String zoneCounterpartyLabelUrl, BigInteger ibcCashflowIn, BigInteger ibcCashflowInDiff, BigInteger ibcCashflowOut, BigInteger ibcCashflowOutDiff, Double ibcTxSuccessRate, Double ibcTxSuccessRateDiff, @NonNull BigInteger ibcTx, @NonNull BigInteger ibcTxDiff, @NonNull BigInteger ibcTxFailed, @NonNull BigInteger ibcTxFailedDiff, @NonNull Boolean isZoneUpToDate, @NonNull Boolean isZoneCounterpartyUpToDate) {
+    public FtChannelGroup(@NonNull String zone, @NonNull Integer timeframe, @NonNull String counterpartyZone,
+                          String zoneLabelUrl, String zoneCounterpartyLabelUrl, BigInteger ibcCashflowIn,
+                          BigInteger ibcCashflowInDiff, BigInteger ibcCashflowOut, BigInteger ibcCashflowOutDiff,
+                          Double ibcTxSuccessRate, Double ibcTxSuccessRateDiff, @NonNull BigInteger ibcTx,
+                          @NonNull BigInteger ibcTxDiff, @NonNull BigInteger ibcTxFailed, @NonNull BigInteger ibcTxFailedDiff,
+                          @NonNull Boolean isZoneUpToDate, @NonNull Boolean isZoneCounterpartyUpToDate,
+                          @NonNull Boolean isZoneCounterpartyMainnet, String zoneReadableName, String zoneCounterpartyReadableName) {
         this.zone = zone;
         this.timeframe = timeframe;
         this.counterpartyZone = counterpartyZone;
@@ -92,6 +108,9 @@ public class FtChannelGroup {
         this.ibcTxFailedDiff = ibcTxFailedDiff;
         this.isZoneUpToDate = isZoneUpToDate;
         this.isZoneCounterpartyUpToDate = isZoneCounterpartyUpToDate;
+        this.isZoneCounterpartyMainnet = isZoneCounterpartyMainnet;
+        this.zoneReadableName = zoneReadableName;
+        this.zoneCounterpartyReadableName = zoneCounterpartyReadableName;
     }
 
     @NonNull
@@ -237,5 +256,30 @@ public class FtChannelGroup {
 
     public void setZoneCounterpartyUpToDate(@NonNull Boolean zoneCounterpartyUpToDate) {
         isZoneCounterpartyUpToDate = zoneCounterpartyUpToDate;
+    }
+
+    @NonNull
+    public Boolean getZoneCounterpartyMainnet() {
+        return isZoneCounterpartyMainnet;
+    }
+
+    public void setZoneCounterpartyMainnet(@NonNull Boolean zoneCounterpartyMainnet) {
+        isZoneCounterpartyMainnet = zoneCounterpartyMainnet;
+    }
+
+    public String getZoneReadableName() {
+        return zoneReadableName;
+    }
+
+    public void setZoneReadableName(String zoneReadableName) {
+        this.zoneReadableName = zoneReadableName;
+    }
+
+    public String getZoneCounterpartyReadableName() {
+        return zoneCounterpartyReadableName;
+    }
+
+    public void setZoneCounterpartyReadableName(String zoneCounterpartyReadableName) {
+        this.zoneCounterpartyReadableName = zoneCounterpartyReadableName;
     }
 }

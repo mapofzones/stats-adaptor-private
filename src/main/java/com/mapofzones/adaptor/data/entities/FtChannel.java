@@ -34,7 +34,7 @@ public class FtChannel {
     @NonNull
     private Integer timeframe;
 
-    @Column(name = "zone_counerparty")
+    @Column(name = "zone_counterparty")
     @NonNull
     private String counterpartyZone;
 
@@ -70,9 +70,9 @@ public class FtChannel {
     @Column(name = "zone_counterparty_readable_name")
     private String zoneCounterpartyReadableName;
 
-    @Column(name = "is_zone_counerparty_mainnet")
+    @Column(name = "is_zone_counterparty_mainnet")
     @NonNull
-    private Boolean isZoneCounerpartyMainnet;
+    private Boolean isZoneCounterpartyMainnet;
 
     @Column(name = "zone_label_url2")
     private String zoneLabelUrl2;
@@ -176,8 +176,8 @@ public class FtChannel {
     }
 
     @NonNull
-    public Boolean getZoneCounerpartyMainnet() {
-        return isZoneCounerpartyMainnet;
+    public Boolean getIsZoneCounterpartyMainnet() {
+        return isZoneCounterpartyMainnet;
     }
 
     public String getZoneLabelUrl2() {

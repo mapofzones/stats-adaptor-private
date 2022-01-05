@@ -146,7 +146,10 @@ public class Processor {
                 BigInteger.valueOf(ftChannel.getIbcTxFailed()),
                 BigInteger.valueOf(ftChannel.getIbcTxFailedDiff()),
                 zoneStatuses.get(zone).getZoneUpToDate(),
-                zoneStatuses.get(ftChannel.getCounterpartyZone()).getZoneUpToDate()
+                zoneStatuses.get(ftChannel.getCounterpartyZone()).getZoneUpToDate(),
+                ftChannel.getIsZoneCounterpartyMainnet(),
+                ftChannel.getZoneReadableName(),
+                ftChannel.getZoneCounterpartyReadableName()
         );
     }
 }
