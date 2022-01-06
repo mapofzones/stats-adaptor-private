@@ -71,9 +71,9 @@ public class Processor {
         System.out.println("channels adaptor finished!");
 
         System.out.println("ready to get ft channels");
-        List<FtChannel> ftChannels = ftChannelRepository.getFtChannelsStats(TimeframeConstants.DAY_STEP);
-        ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.WEEK_STEP));
-        ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.MONTH_STEP));
+        List<FtChannel> ftChannels = ftChannelRepository.getFtChannelsStats(TimeframeConstants.DAY);
+        ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.WEEK));
+        ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.MONTH));
         System.out.println("ready to save ft channels");
         ftChannelRepository.saveAll(ftChannels);
         System.out.println("ft channels adaptor finished!");
