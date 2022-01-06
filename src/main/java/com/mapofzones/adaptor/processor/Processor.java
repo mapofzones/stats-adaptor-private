@@ -95,34 +95,44 @@ public class Processor {
 
     private List<FtChannelGroup> getFtChannelGroups(List<FtChannel> ftChannels, Map<String, ZoneStatus> zoneStatuses){
         List<FtChannelGroup> result = new ArrayList<>();
-        HashMap<String, HashMap<Integer, FtChannelGroup>> channelGroups = new HashMap<>();
+        HashMap<String, HashMap<Integer, HashMap<String, FtChannelGroup>>> channelGroupedGroups = new HashMap<>();
         for (FtChannel ftChannel: ftChannels) {
             String zone = ftChannel.getZone();
+            String zoneCounterparty = ftChannel.getCounterpartyZone();
             Integer timeframe = ftChannel.getTimeframe();
-            if (!channelGroups.containsKey(zone)) {
+            if (!channelGroupedGroups.containsKey(zone)) {
                 FtChannelGroup ftChannelGroup = createChannelGroup(zoneStatuses, ftChannel, zone);
-                HashMap<Integer, FtChannelGroup> hashGroup = new HashMap<>() {{ put(timeframe, ftChannelGroup);}};
-                channelGroups.put(zone, hashGroup);
+                HashMap<String, FtChannelGroup> hashGroup = new HashMap<>() {{ put(zoneCounterparty, ftChannelGroup);}};
+                HashMap<Integer, HashMap<String, FtChannelGroup>> hashTimeframe = new HashMap<>() {{ put(timeframe, hashGroup);}};
+                channelGroupedGroups.put(zone, hashTimeframe);
             } else {
-                if (!channelGroups.get(zone).containsKey(timeframe)) {
+                if (!channelGroupedGroups.get(zone).containsKey(timeframe)) {
                     FtChannelGroup ftChannelGroup = createChannelGroup(zoneStatuses, ftChannel, zone);
-                    channelGroups.get(zone).put(timeframe, ftChannelGroup);
+                    HashMap<String, FtChannelGroup> hashGroup = new HashMap<>() {{ put(zoneCounterparty, ftChannelGroup);}};
+                    channelGroupedGroups.get(zone).put(timeframe, hashGroup);
                 } else {
-                    FtChannelGroup ftChannelGroup = channelGroups.get(zone).get(timeframe);
-                    ftChannelGroup.setIbcCashflowIn(ftChannelGroup.getIbcCashflowIn().add(ftChannel.getIbcCashflowIn()));
-                    ftChannelGroup.setIbcCashflowInDiff(ftChannelGroup.getIbcCashflowInDiff().add(ftChannel.getIbcCashflowInDiff()));
-                    ftChannelGroup.setIbcCashflowOut(ftChannelGroup.getIbcCashflowOut().add(ftChannel.getIbcCashflowOut()));
-                    ftChannelGroup.setIbcCashflowOutDiff(ftChannelGroup.getIbcCashflowOutDiff().add(ftChannel.getIbcCashflowOutDiff()));
-                    ftChannelGroup.setIbcTx(ftChannelGroup.getIbcTx().add(BigInteger.valueOf(ftChannel.getIbcTx())));
-                    ftChannelGroup.setIbcTxDiff(ftChannelGroup.getIbcTxDiff().add(BigInteger.valueOf(ftChannel.getIbcTxDiff())));
-                    ftChannelGroup.setIbcTxFailed(ftChannelGroup.getIbcTxFailed().add(BigInteger.valueOf(ftChannel.getIbcTxFailed())));
-                    ftChannelGroup.setIbcTxFailedDiff(ftChannelGroup.getIbcTxFailedDiff().add(BigInteger.valueOf(ftChannel.getIbcTxFailedDiff())));
+                    if (!channelGroupedGroups.get(zone).get(timeframe).containsKey(zoneCounterparty)) {
+                        FtChannelGroup ftChannelGroup = createChannelGroup(zoneStatuses, ftChannel, zone);
+                        channelGroupedGroups.get(zone).get(timeframe).put(zoneCounterparty, ftChannelGroup);
+                    } else {
+                        FtChannelGroup ftChannelGroup = channelGroupedGroups.get(zone).get(timeframe).get(zoneCounterparty);
+                        ftChannelGroup.setIbcCashflowIn(ftChannelGroup.getIbcCashflowIn().add(ftChannel.getIbcCashflowIn()));
+                        ftChannelGroup.setIbcCashflowInDiff(ftChannelGroup.getIbcCashflowInDiff().add(ftChannel.getIbcCashflowInDiff()));
+                        ftChannelGroup.setIbcCashflowOut(ftChannelGroup.getIbcCashflowOut().add(ftChannel.getIbcCashflowOut()));
+                        ftChannelGroup.setIbcCashflowOutDiff(ftChannelGroup.getIbcCashflowOutDiff().add(ftChannel.getIbcCashflowOutDiff()));
+                        ftChannelGroup.setIbcTx(ftChannelGroup.getIbcTx().add(BigInteger.valueOf(ftChannel.getIbcTx())));
+                        ftChannelGroup.setIbcTxDiff(ftChannelGroup.getIbcTxDiff().add(BigInteger.valueOf(ftChannel.getIbcTxDiff())));
+                        ftChannelGroup.setIbcTxFailed(ftChannelGroup.getIbcTxFailed().add(BigInteger.valueOf(ftChannel.getIbcTxFailed())));
+                        ftChannelGroup.setIbcTxFailedDiff(ftChannelGroup.getIbcTxFailedDiff().add(BigInteger.valueOf(ftChannel.getIbcTxFailedDiff())));
+                    }
                 }
             }
         }
 
-        for (HashMap<Integer, FtChannelGroup> linkedGroups: channelGroups.values()) {
-            result.addAll(linkedGroups.values());
+        for (HashMap<Integer, HashMap<String, FtChannelGroup>> channelGroups: channelGroupedGroups.values()) {
+            for (HashMap<String, FtChannelGroup> linkedGroups : channelGroups.values()) {
+                result.addAll(linkedGroups.values());
+            }
         }
 
         return result;

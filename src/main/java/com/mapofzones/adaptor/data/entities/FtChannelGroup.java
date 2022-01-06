@@ -19,6 +19,7 @@ public class FtChannelGroup {
     @NonNull
     private Integer timeframe;
 
+    @Id
     @Column(name = "zone_counterparty")
     @NonNull
     private String counterpartyZone;
