@@ -43,7 +43,14 @@ public interface QueryConstants {
             "    stats.is_mainnet_only,\n" +
             "    stats.ibc_cashflow_period,\n" +
             "    stats.ibc_cashflow_period_diff,\n" +
-            "    stats.top_ibc_cashflow_zone_pair\n" +
+            "    stats.top_ibc_cashflow_zone_pair,\n" +
+            "    stats.top_transfer_zone_pair,\n" +
+            "    stats.ibc_cashflow_pending_period,\n" +
+            "    stats.chart_cashflow,\n" +
+            "    stats.ibc_transfers_period,\n" +
+            "    stats.ibc_transfers_period_diff,\n" +
+            "    stats.ibc_transfers_pending_period,\n" +
+            "    stats.chart_transfers\n" +
             "from " +
             "    get_total_stats(:timeframe, :chart_step, :is_mainnet_only) stats";
 

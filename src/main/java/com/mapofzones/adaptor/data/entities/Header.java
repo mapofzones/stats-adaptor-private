@@ -54,4 +54,32 @@ public class Header {
     @Column(name = "top_ibc_cashflow_zone_pair")
     @NonNull
     private String topIbcCashflowZonePair;
+
+    @Column(name = "top_transfer_zone_pair")
+    @NonNull
+    private String topTransferZonePair;
+
+    @Column(name = "ibc_cashflow_pending_period")
+    @NonNull
+    private BigInteger ibcCashflowPendingPeriod;
+
+    @Column(name = "chart_cashflow")
+    @NonNull
+    private String chartCashflow;
+
+    @Column(name = "ibc_transfers_period")
+    @NonNull
+    private Integer ibcTransfersPeriod;
+
+    @Column(name = "ibc_transfers_period_diff")
+    @NonNull
+    private Integer ibcTransfersPeriodDiff;
+
+    @Column(name = "ibc_transfers_pending_period")
+    @NonNull
+    private Integer ibcTransfersPendingPeriod;
+
+    @Column(name = "chart_transfers")
+    @NonNull
+    private String chartTransfers;
 }
