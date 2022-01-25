@@ -104,6 +104,12 @@ public class FtChannel {
     @Column(name = "ibc_tx_success_rate_diff")
     private Double ibcTxSuccessRateDiff;
 
+    @Column(name = "ibc_cashflow_in_pending")
+    private BigInteger ibcCashflowInPending;
+
+    @Column(name = "ibc_cashflow_out_pending")
+    private BigInteger ibcCashflowOutPending;
+
     @NonNull
     public String getZone() {
         return zone;
@@ -218,5 +224,18 @@ public class FtChannel {
 
     public Double getIbcTxSuccessRateDiff() {
         return ibcTxSuccessRateDiff;
+    }
+
+    @NonNull
+    public Boolean getZoneCounterpartyMainnet() {
+        return isZoneCounterpartyMainnet;
+    }
+
+    public BigInteger getIbcCashflowInPending() {
+        return ibcCashflowInPending;
+    }
+
+    public BigInteger getIbcCashflowOutPending() {
+        return ibcCashflowOutPending;
     }
 }

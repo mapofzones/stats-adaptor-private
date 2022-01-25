@@ -71,9 +71,9 @@ public class Processor {
         System.out.println("channels adaptor finished!");
 
         System.out.println("ready to get ft channels");
-        List<FtChannel> ftChannels = ftChannelRepository.getFtChannelsStats(TimeframeConstants.DAY);
-        ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.WEEK));
-        ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.MONTH));
+        List<FtChannel> ftChannels = ftChannelRepository.getFtChannelsStats(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, false);
+        ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, false));
+        ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP, false));
         System.out.println("ready to save ft channels");
         ftChannelRepository.saveAll(ftChannels);
         System.out.println("ft channels adaptor finished!");
@@ -124,6 +124,8 @@ public class Processor {
                         ftChannelGroup.setIbcTxDiff(ftChannelGroup.getIbcTxDiff().add(BigInteger.valueOf(ftChannel.getIbcTxDiff())));
                         ftChannelGroup.setIbcTxFailed(ftChannelGroup.getIbcTxFailed().add(BigInteger.valueOf(ftChannel.getIbcTxFailed())));
                         ftChannelGroup.setIbcTxFailedDiff(ftChannelGroup.getIbcTxFailedDiff().add(BigInteger.valueOf(ftChannel.getIbcTxFailedDiff())));
+                        ftChannelGroup.setIbcCashflowInPending(ftChannelGroup.getIbcCashflowInPending().add(ftChannel.getIbcCashflowInPending()));
+                        ftChannelGroup.setIbcCashflowOutPending(ftChannelGroup.getIbcCashflowOutPending().add(ftChannel.getIbcCashflowOutPending()));
                     }
                 }
             }
@@ -159,7 +161,9 @@ public class Processor {
                 zoneStatuses.get(ftChannel.getCounterpartyZone()).getZoneUpToDate(),
                 ftChannel.getIsZoneCounterpartyMainnet(),
                 ftChannel.getZoneReadableName(),
-                ftChannel.getZoneCounterpartyReadableName()
+                ftChannel.getZoneCounterpartyReadableName(),
+                ftChannel.getIbcCashflowInPending(),
+                ftChannel.getIbcCashflowOutPending()
         );
     }
 }
