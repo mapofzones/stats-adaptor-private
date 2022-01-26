@@ -304,4 +304,43 @@ public class ZoneStats {
 
     @Column(name = "ibc_cashflow_in_mainnet_rating_diff")
     private Integer ibcCashflowInMainnetRatingDiff;
+
+    @Column(name = "ibc_cashflow_pending")
+    private BigInteger ibcCashflowPending;
+
+    @Column(name = "ibc_cashflow_in_pending")
+    private BigInteger ibcCashflowInPending;
+
+    @Column(name = "ibc_cashflow_out_pending")
+    private BigInteger ibcCashflowOutPending;
+
+    @Column(name = "chart_cashflow")
+    private String chart_cashflow;
+
+    @Column(name = "ibc_transfers")
+    private Integer ibcTransfers;
+
+    @Column(name = "ibc_transfers_diff")
+    private Integer ibcTransfersDiff;
+
+    @Column(name = "ibc_transfers_pending")
+    private Integer ibcTransfersPending;
+
+    @Column(name = "ibc_transfers_mainnet_rating")
+    private Integer ibcTransfersMainnetRating;
+
+    @Column(name = "ibc_transfers_mainnet_rating_diff")
+    private Integer ibcTransfersMainnetRatingDiff;
+
+    @Column(name = "ibc_transfers_mainnet_weight")
+    private Double ibcTransfersMainnetWeight;
+
+    @Column(name = "ibc_transfers_rating")
+    private Integer ibcTransfersRating;
+
+    @Column(name = "ibc_transfers_rating_diff")
+    private Integer ibcTransfersRatingDiff;
+
+    @Column(name = "ibc_transfers_weight")
+    private Double ibcTransfersWeight;
 }

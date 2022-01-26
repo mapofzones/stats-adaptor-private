@@ -140,9 +140,22 @@ public interface QueryConstants {
             "    stats.ibc_cashflow_in_weight,\n" +
             "    stats.ibc_cashflow_in_mainnet_weight,\n" +
             "    stats.ibc_cashflow_in_rating_diff,\n" +
-            "    stats.ibc_cashflow_in_mainnet_rating_diff\n" +
+            "    stats.ibc_cashflow_in_mainnet_rating_diff,\n" +
+            "    stats.ibc_cashflow_pending,\n" +
+            "    stats.ibc_cashflow_in_pending,\n" +
+            "    stats.ibc_cashflow_out_pending,\n" +
+            "    stats.chart_cashflow,\n" +
+            "    stats.ibc_transfers,\n" +
+            "    stats.ibc_transfers_diff,\n" +
+            "    stats.ibc_transfers_pending,\n" +
+            "    stats.ibc_transfers_mainnet_rating,\n" +
+            "    stats.ibc_transfers_mainnet_rating_diff,\n" +
+            "    stats.ibc_transfers_mainnet_weight,\n" +
+            "    stats.ibc_transfers_rating,\n" +
+            "    stats.ibc_transfers_rating_diff,\n" +
+            "    stats.ibc_transfers_weight\n" +
             "from\n" +
-            "    get_full_stats_for_each_zone(:timeframe, :chart_step) stats";
+            "    get_full_stats_for_each_zone(:timeframe, :chart_step, :is_mainnet_only) stats";
 
     String GET_GRAPHS_BY_TIMEFRAME = "" +
             "select\n" +
