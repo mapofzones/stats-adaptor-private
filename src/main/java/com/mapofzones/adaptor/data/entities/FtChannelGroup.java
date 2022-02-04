@@ -50,19 +50,19 @@ public class FtChannelGroup {
 
     @Column(name = "ibc_tx")
     @NonNull
-    private BigInteger ibcTx;
+    private Integer ibcTx;
 
     @Column(name = "ibc_tx_diff")
     @NonNull
-    private BigInteger ibcTxDiff;
+    private Integer ibcTxDiff;
 
     @Column(name = "ibc_tx_failed")
     @NonNull
-    private BigInteger ibcTxFailed;
+    private Integer ibcTxFailed;
 
     @Column(name = "ibc_tx_failed_diff")
     @NonNull
-    private BigInteger ibcTxFailedDiff;
+    private Integer ibcTxFailedDiff;
 
     @Column(name = "is_zone_up_to_date")
     @NonNull
@@ -96,8 +96,8 @@ public class FtChannelGroup {
     public FtChannelGroup(@NonNull String zone, @NonNull Integer timeframe, @NonNull String counterpartyZone,
                           String zoneLabelUrl, String zoneCounterpartyLabelUrl, BigInteger ibcCashflowIn,
                           BigInteger ibcCashflowInDiff, BigInteger ibcCashflowOut, BigInteger ibcCashflowOutDiff,
-                          Double ibcTxSuccessRate, Double ibcTxSuccessRateDiff, @NonNull BigInteger ibcTx,
-                          @NonNull BigInteger ibcTxDiff, @NonNull BigInteger ibcTxFailed, @NonNull BigInteger ibcTxFailedDiff,
+                          Double ibcTxSuccessRate, Double ibcTxSuccessRateDiff, @NonNull Integer ibcTx,
+                          @NonNull Integer ibcTxDiff, @NonNull Integer ibcTxFailed, @NonNull Integer ibcTxFailedDiff,
                           @NonNull Boolean isZoneUpToDate, @NonNull Boolean isZoneCounterpartyUpToDate,
                           @NonNull Boolean isZoneCounterpartyMainnet, String zoneReadableName, String zoneCounterpartyReadableName,
                           @NonNull BigInteger ibcCashflowInPending, @NonNull BigInteger ibcCashflowOutPending) {
@@ -217,38 +217,38 @@ public class FtChannelGroup {
     }
 
     @NonNull
-    public BigInteger getIbcTx() {
+    public Integer getIbcTx() {
         return ibcTx;
     }
 
-    public void setIbcTx(@NonNull BigInteger ibcTx) {
+    public void setIbcTx(@NonNull Integer ibcTx) {
         this.ibcTx = ibcTx;
     }
 
     @NonNull
-    public BigInteger getIbcTxDiff() {
+    public Integer getIbcTxDiff() {
         return ibcTxDiff;
     }
 
-    public void setIbcTxDiff(@NonNull BigInteger ibcTxDiff) {
+    public void setIbcTxDiff(@NonNull Integer ibcTxDiff) {
         this.ibcTxDiff = ibcTxDiff;
     }
 
     @NonNull
-    public BigInteger getIbcTxFailed() {
+    public Integer getIbcTxFailed() {
         return ibcTxFailed;
     }
 
-    public void setIbcTxFailed(@NonNull BigInteger ibcTxFailed) {
+    public void setIbcTxFailed(@NonNull Integer ibcTxFailed) {
         this.ibcTxFailed = ibcTxFailed;
     }
 
     @NonNull
-    public BigInteger getIbcTxFailedDiff() {
+    public Integer getIbcTxFailedDiff() {
         return ibcTxFailedDiff;
     }
 
-    public void setIbcTxFailedDiff(@NonNull BigInteger ibcTxFailedDiff) {
+    public void setIbcTxFailedDiff(@NonNull Integer ibcTxFailedDiff) {
         this.ibcTxFailedDiff = ibcTxFailedDiff;
     }
 

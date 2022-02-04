@@ -5,7 +5,6 @@ import com.mapofzones.adaptor.data.entities.*;
 import com.mapofzones.adaptor.data.repository.*;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -120,12 +119,18 @@ public class Processor {
                         ftChannelGroup.setIbcCashflowInDiff(ftChannelGroup.getIbcCashflowInDiff().add(ftChannel.getIbcCashflowInDiff()));
                         ftChannelGroup.setIbcCashflowOut(ftChannelGroup.getIbcCashflowOut().add(ftChannel.getIbcCashflowOut()));
                         ftChannelGroup.setIbcCashflowOutDiff(ftChannelGroup.getIbcCashflowOutDiff().add(ftChannel.getIbcCashflowOutDiff()));
-                        ftChannelGroup.setIbcTx(ftChannelGroup.getIbcTx().add(BigInteger.valueOf(ftChannel.getIbcTx())));
-                        ftChannelGroup.setIbcTxDiff(ftChannelGroup.getIbcTxDiff().add(BigInteger.valueOf(ftChannel.getIbcTxDiff())));
-                        ftChannelGroup.setIbcTxFailed(ftChannelGroup.getIbcTxFailed().add(BigInteger.valueOf(ftChannel.getIbcTxFailed())));
-                        ftChannelGroup.setIbcTxFailedDiff(ftChannelGroup.getIbcTxFailedDiff().add(BigInteger.valueOf(ftChannel.getIbcTxFailedDiff())));
+                        ftChannelGroup.setIbcTx(ftChannelGroup.getIbcTx() + ftChannel.getIbcTx());
+                        ftChannelGroup.setIbcTxDiff(ftChannelGroup.getIbcTxDiff() + ftChannel.getIbcTxDiff());
+                        ftChannelGroup.setIbcTxFailed(ftChannelGroup.getIbcTxFailed() + ftChannel.getIbcTxFailed());
+                        ftChannelGroup.setIbcTxFailedDiff(ftChannelGroup.getIbcTxFailedDiff() + ftChannel.getIbcTxFailedDiff());
                         ftChannelGroup.setIbcCashflowInPending(ftChannelGroup.getIbcCashflowInPending().add(ftChannel.getIbcCashflowInPending()));
                         ftChannelGroup.setIbcCashflowOutPending(ftChannelGroup.getIbcCashflowOutPending().add(ftChannel.getIbcCashflowOutPending()));
+
+                        double divider = Math.max(ftChannelGroup.getIbcTx() + ftChannelGroup.getIbcTxFailed(), 1);
+                        ftChannelGroup.setIbcTxSuccessRate(100.0 * (double)ftChannelGroup.getIbcTx() / divider);
+
+                        double diffDivider = Math.max(ftChannelGroup.getIbcTxDiff() + ftChannelGroup.getIbcTxFailedDiff(), 1);
+                        ftChannelGroup.setIbcTxSuccessRateDiff(100.0 * (double)ftChannelGroup.getIbcTxDiff() / diffDivider);
                     }
                 }
             }
@@ -153,10 +158,10 @@ public class Processor {
                 ftChannel.getIbcCashflowOutDiff(),
                 ftChannel.getIbcTxSuccessRate(),
                 ftChannel.getIbcTxSuccessRateDiff(),
-                BigInteger.valueOf(ftChannel.getIbcTx()),
-                BigInteger.valueOf(ftChannel.getIbcTxDiff()),
-                BigInteger.valueOf(ftChannel.getIbcTxFailed()),
-                BigInteger.valueOf(ftChannel.getIbcTxFailedDiff()),
+                ftChannel.getIbcTx(),
+                ftChannel.getIbcTxDiff(),
+                ftChannel.getIbcTxFailed(),
+                ftChannel.getIbcTxFailedDiff(),
                 zoneStatuses.get(zone).getZoneUpToDate(),
                 zoneStatuses.get(ftChannel.getCounterpartyZone()).getZoneUpToDate(),
                 ftChannel.getIsZoneCounterpartyMainnet(),
