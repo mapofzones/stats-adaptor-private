@@ -343,4 +343,7 @@ public class ZoneStats {
 
     @Column(name = "ibc_transfers_weight")
     private Double ibcTransfersWeight;
+
+    @Column(name = "success_rate")
+    private Double successRate;
 }

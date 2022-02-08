@@ -153,7 +153,8 @@ public interface QueryConstants {
             "    stats.ibc_transfers_mainnet_weight,\n" +
             "    stats.ibc_transfers_rating,\n" +
             "    stats.ibc_transfers_rating_diff,\n" +
-            "    stats.ibc_transfers_weight\n" +
+            "    stats.ibc_transfers_weight,\n" +
+            "    stats.success_rate\n" +
             "from\n" +
             "    get_full_stats_for_each_zone(:timeframe, :chart_step, :is_mainnet_only) stats";
 
