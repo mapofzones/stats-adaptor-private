@@ -129,8 +129,13 @@ public class Processor {
                         double divider = Math.max(ftChannelGroup.getIbcTx() + ftChannelGroup.getIbcTxFailed(), 1);
                         ftChannelGroup.setIbcTxSuccessRate(100.0 * (double)ftChannelGroup.getIbcTx() / divider);
 
-                        double diffDivider = Math.max(ftChannelGroup.getIbcTxDiff() + ftChannelGroup.getIbcTxFailedDiff(), 1);
-                        ftChannelGroup.setIbcTxSuccessRateDiff(100.0 * (double)ftChannelGroup.getIbcTxDiff() / diffDivider);
+                        double diffDivider = Math.max(
+                                ftChannelGroup.getIbcTx() - ftChannelGroup.getIbcTxDiff() + ftChannelGroup.getIbcTxFailed() - ftChannelGroup.getIbcTxFailedDiff(),
+                                1
+                        );
+                        ftChannelGroup.setIbcTxSuccessRateDiff(
+                                ftChannelGroup.getIbcTxSuccessRate() -
+                                        (100.0 * (double)(ftChannelGroup.getIbcTx() - ftChannelGroup.getIbcTxDiff()) / diffDivider));
                     }
                 }
             }
