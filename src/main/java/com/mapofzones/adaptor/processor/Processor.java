@@ -136,6 +136,10 @@ public class Processor {
                         ftChannelGroup.setIbcTxSuccessRateDiff(
                                 ftChannelGroup.getIbcTxSuccessRate() -
                                         (100.0 * (double)(ftChannelGroup.getIbcTx() - ftChannelGroup.getIbcTxDiff()) / diffDivider));
+                        ftChannelGroup.setIbcTxPending(
+                                (ftChannelGroup.getIbcTxPending() > 0 ? ftChannelGroup.getIbcTxPending() : 0) +
+                                ftChannel.getIbcTxPending()
+                        );
                     }
                 }
             }
@@ -173,7 +177,8 @@ public class Processor {
                 ftChannel.getZoneReadableName(),
                 ftChannel.getZoneCounterpartyReadableName(),
                 ftChannel.getIbcCashflowInPending(),
-                ftChannel.getIbcCashflowOutPending()
+                ftChannel.getIbcCashflowOutPending(),
+                ftChannel.getIbcTxPending()
         );
     }
 }

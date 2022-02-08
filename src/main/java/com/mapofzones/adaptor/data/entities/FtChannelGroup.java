@@ -90,6 +90,9 @@ public class FtChannelGroup {
     @NonNull
     private BigInteger ibcCashflowOutPending;
 
+    @Column(name = "ibc_tx_pending")
+    private Integer ibcTxPending;
+
     public FtChannelGroup() {
     }
 
@@ -99,8 +102,9 @@ public class FtChannelGroup {
                           Double ibcTxSuccessRate, Double ibcTxSuccessRateDiff, @NonNull Integer ibcTx,
                           @NonNull Integer ibcTxDiff, @NonNull Integer ibcTxFailed, @NonNull Integer ibcTxFailedDiff,
                           @NonNull Boolean isZoneUpToDate, @NonNull Boolean isZoneCounterpartyUpToDate,
-                          @NonNull Boolean isZoneCounterpartyMainnet, String zoneReadableName, String zoneCounterpartyReadableName,
-                          @NonNull BigInteger ibcCashflowInPending, @NonNull BigInteger ibcCashflowOutPending) {
+                          @NonNull Boolean isZoneCounterpartyMainnet, String zoneReadableName,
+                          String zoneCounterpartyReadableName, @NonNull BigInteger ibcCashflowInPending,
+                          @NonNull BigInteger ibcCashflowOutPending, Integer ibcTxPending) {
         this.zone = zone;
         this.timeframe = timeframe;
         this.counterpartyZone = counterpartyZone;
@@ -123,6 +127,7 @@ public class FtChannelGroup {
         this.zoneCounterpartyReadableName = zoneCounterpartyReadableName;
         this.ibcCashflowInPending = ibcCashflowInPending;
         this.ibcCashflowOutPending = ibcCashflowOutPending;
+        this.ibcTxPending = ibcTxPending;
     }
 
     @NonNull
@@ -311,5 +316,13 @@ public class FtChannelGroup {
 
     public void setIbcCashflowOutPending(@NonNull BigInteger ibcCashflowOutPending) {
         this.ibcCashflowOutPending = ibcCashflowOutPending;
+    }
+
+    public Integer getIbcTxPending() {
+        return ibcTxPending;
+    }
+
+    public void setIbcTxPending(Integer ibcTxPending) {
+        this.ibcTxPending = ibcTxPending;
     }
 }

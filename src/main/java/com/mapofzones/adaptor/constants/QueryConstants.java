@@ -199,7 +199,8 @@ public interface QueryConstants {
             "    ibc_tx_success_rate,\n" +
             "    ibc_tx_success_rate_diff,\n" +
             "    ibc_cashflow_in_pending,\n" +
-            "    ibc_cashflow_out_pending\n" +
+            "    ibc_cashflow_out_pending,\n" +
+            "    ibc_tx_pending\n" +
             "from\n" +
             "    public.get_ft_chanels_stats(:timeframe, :chart_step, :is_mainnet_only)";
 

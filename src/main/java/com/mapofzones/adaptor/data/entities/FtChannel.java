@@ -110,6 +110,9 @@ public class FtChannel {
     @Column(name = "ibc_cashflow_out_pending")
     private BigInteger ibcCashflowOutPending;
 
+    @Column(name = "ibc_tx_pending")
+    private Integer ibcTxPending;
+
     @NonNull
     public String getZone() {
         return zone;
@@ -237,5 +240,9 @@ public class FtChannel {
 
     public BigInteger getIbcCashflowOutPending() {
         return ibcCashflowOutPending;
+    }
+
+    public Integer getIbcTxPending() {
+        return ibcTxPending;
     }
 }
