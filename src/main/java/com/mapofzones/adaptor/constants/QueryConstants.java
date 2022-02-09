@@ -50,7 +50,8 @@ public interface QueryConstants {
             "    stats.ibc_transfers_period,\n" +
             "    stats.ibc_transfers_period_diff,\n" +
             "    stats.ibc_transfers_pending_period,\n" +
-            "    stats.chart_transfers\n" +
+            "    stats.chart_transfers,\n" +
+            "    stats.ibc_transfers_failed_period\n" +
             "from " +
             "    get_total_stats(:timeframe, :chart_step, :is_mainnet_only) stats";
 

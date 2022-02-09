@@ -82,4 +82,8 @@ public class Header {
     @Column(name = "chart_transfers")
     @NonNull
     private String chartTransfers;
+
+    @Column(name = "ibc_transfers_failed_period")
+    @NonNull
+    private Integer ibcTransfersFailedPeriod;
 }
