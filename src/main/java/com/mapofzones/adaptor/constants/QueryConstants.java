@@ -166,9 +166,13 @@ public interface QueryConstants {
             "    channels_cnt_open,\n" +
             "    channels_cnt_active,\n" +
             "    channels_percent_active,\n" +
-            "    is_mainnet\n" +
+            "    is_mainnet,\n" +
+            "    ibc_transfers,\n" +
+            "    ibc_transfers_pending,\n" +
+            "    ibc_cashflow,\n" +
+            "    ibc_cashflow_pending\n" +
             "from\n" +
-            "    public.get_zones_graphs(:timeframe)";
+            "    public.get_zones_graphs(:timeframe, :chart_step, :is_mainnet_only)";
 
     String GET_FT_CHANNELS_STATS = "" +
             "select\n" +

@@ -56,9 +56,9 @@ public class Processor {
         System.out.println("zones_stats adaptor finished!");
 
         System.out.println("ready to get graphs");
-        List<Graph> graphs = graphRepository.getGraphsByTimeframe(TimeframeConstants.DAY);
-        graphs.addAll(graphRepository.getGraphsByTimeframe(TimeframeConstants.WEEK));
-        graphs.addAll(graphRepository.getGraphsByTimeframe(TimeframeConstants.MONTH));
+        List<Graph> graphs = graphRepository.getGraphsByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, false);
+        graphs.addAll(graphRepository.getGraphsByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, false));
+        graphs.addAll(graphRepository.getGraphsByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP, false));
         System.out.println("ready to save graphs");
         graphRepository.saveAll(graphs);
         System.out.println("graphs adaptor finished!");

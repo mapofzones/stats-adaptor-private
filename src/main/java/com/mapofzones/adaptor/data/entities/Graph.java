@@ -3,6 +3,7 @@ package com.mapofzones.adaptor.data.entities;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 
 @Entity
 @IdClass(GraphKey.class)
@@ -38,4 +39,16 @@ public class Graph {
     @Column(name = "is_mainnet")
     @NonNull
     private Boolean isMainnet;
+
+    @Column(name = "ibc_transfers")
+    private Integer ibcTransfers;
+
+    @Column(name = "ibc_transfers_pending")
+    private Integer ibcTransfersPending;
+
+    @Column(name = "ibc_cashflow")
+    private BigInteger ibcCashflow;
+
+    @Column(name = "ibc_cashflow_pending")
+    private BigInteger ibcCashflowPending;
 }
