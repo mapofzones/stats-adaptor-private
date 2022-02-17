@@ -346,4 +346,28 @@ public class ZoneStats {
 
     @Column(name = "success_rate")
     private Double successRate;
+
+    @Column(name = "ibc_active_addresses")
+    private Integer ibcActiveAddresses;
+
+    @Column(name = "ibc_active_addresses_diff")
+    private Integer ibcActiveAddressesDiff;
+
+    @Column(name = "ibc_active_addresses_rating")
+    private Integer ibcActiveAddressesRating;
+
+    @Column(name = "ibc_active_addresses_rating_diff")
+    private Integer ibcActiveAddressesRatingDiff;
+
+    @Column(name = "ibc_active_addresses_weight")
+    private Integer ibcActiveAddressesWeight;
+
+    @Column(name = "ibc_active_addresses_mainnet_rating")
+    private Integer ibcActiveAddressesMainnetRating;
+
+    @Column(name = "ibc_active_addresses_mainnet_rating_diff")
+    private Integer ibcActiveAddressesMainnetRatingDiff;
+
+    @Column(name = "ibc_active_addresses_mainnet_weight")
+    private Integer ibcActiveAddressesMainnetWeight;
 }
