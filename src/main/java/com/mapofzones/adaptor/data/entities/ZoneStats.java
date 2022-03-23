@@ -360,7 +360,7 @@ public class ZoneStats {
     private Integer ibcActiveAddressesRatingDiff;
 
     @Column(name = "ibc_active_addresses_weight")
-    private Integer ibcActiveAddressesWeight;
+    private Double ibcActiveAddressesWeight;
 
     @Column(name = "ibc_active_addresses_mainnet_rating")
     private Integer ibcActiveAddressesMainnetRating;
@@ -369,5 +369,5 @@ public class ZoneStats {
     private Integer ibcActiveAddressesMainnetRatingDiff;
 
     @Column(name = "ibc_active_addresses_mainnet_weight")
-    private Integer ibcActiveAddressesMainnetWeight;
+    private Double ibcActiveAddressesMainnetWeight;
 }
