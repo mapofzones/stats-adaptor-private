@@ -163,7 +163,25 @@ public interface QueryConstants {
             "    stats.ibc_active_addresses_weight,\n" +
             "    stats.ibc_active_addresses_mainnet_rating,\n" +
             "    stats.ibc_active_addresses_mainnet_rating_diff,\n" +
-            "    stats.ibc_active_addresses_mainnet_weight\n" +
+            "    stats.ibc_active_addresses_mainnet_weight,\n" +
+            "    stats.website,\n" +
+            "    stats.ibc_active_addresses_mainnet,\n" +
+            "    stats.ibc_active_addresses_mainnet_diff,\n" +
+            "    stats.success_rate_mainnet,\n" +
+            "    stats.ibc_cashflow_mainnet,\n" +
+            "    stats.ibc_cashflow_mainnet_diff,\n" +
+            "    stats.ibc_cashflow_in_mainnet,\n" +
+            "    stats.ibc_cashflow_in_percent_mainnet,\n" +
+            "    stats.ibc_cashflow_out_mainnet,\n" +
+            "    stats.ibc_cashflow_out_percent_mainnet,\n" +
+            "    stats.ibc_transfers_mainnet,\n" +
+            "    stats.ibc_transfers_mainnet_diff,\n" +
+            "    stats.ibc_transfers_pending_mainnet,\n" +
+            "    stats.ibc_cashflow_in_pending_mainnet,\n" +
+            "    stats.ibc_cashflow_out_pending_mainnet,\n" +
+            "    stats.ibc_cashflow_pending_mainnet,\n" +
+            "    stats.ibc_cashflow_in_mainnet_diff,\n" +
+            "    stats.ibc_cashflow_out_mainnet_diff\n" +
             "from\n" +
             "    get_full_stats_for_each_zone(:timeframe, :chart_step, :is_mainnet_only) stats";
 

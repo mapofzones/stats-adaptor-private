@@ -370,4 +370,58 @@ public class ZoneStats {
 
     @Column(name = "ibc_active_addresses_mainnet_weight")
     private Double ibcActiveAddressesMainnetWeight;
+
+    @Column(name = "website")
+    private String website;
+
+    @Column(name = "ibc_active_addresses_mainnet")
+    private Integer ibcActiveAddressesMainnet;
+
+    @Column(name = "ibc_active_addresses_mainnet_diff")
+    private Integer ibcActiveAddressesMainnetDiff;
+
+    @Column(name = "success_rate_mainnet")
+    private Double successRateMainnet;
+
+    @Column(name = "ibc_cashflow_mainnet")
+    private BigInteger ibcCashflowMainnet;
+
+    @Column(name = "ibc_cashflow_mainnet_diff")
+    private BigInteger ibcCashflowMainnetDiff;
+
+    @Column(name = "ibc_cashflow_in_mainnet")
+    private BigInteger ibcCashflowInMainnet;
+
+    @Column(name = "ibc_cashflow_in_percent_mainnet")
+    private Double ibcCashflowInPercentMainnet;
+
+    @Column(name = "ibc_cashflow_out_mainnet")
+    private BigInteger ibcCashflowOutMainnet;
+
+    @Column(name = "ibc_cashflow_out_percent_mainnet")
+    private Double ibcCashflowOutPercentMainnet;
+
+    @Column(name = "ibc_transfers_mainnet")
+    private Integer ibcTransfersMainnet;
+
+    @Column(name = "ibc_transfers_mainnet_diff")
+    private Integer ibcTransfersMainnetDiff;
+
+    @Column(name = "ibc_transfers_pending_mainnet")
+    private Integer ibcTransfersPendingMainnet;
+
+    @Column(name = "ibc_cashflow_in_pending_mainnet")
+    private BigInteger ibcCashflowInPendingMainnet;
+
+    @Column(name = "ibc_cashflow_out_pending_mainnet")
+    private BigInteger ibcCashflowOutPendingMainnet;
+
+    @Column(name = "ibc_cashflow_pending_mainnet")
+    private BigInteger ibcCashflowPendingMainnet;
+
+    @Column(name = "ibc_cashflow_in_mainnet_diff")
+    private BigInteger ibcCashflowInMainnetDiff;
+
+    @Column(name = "ibc_cashflow_out_mainnet_diff")
+    private BigInteger ibcCashflowOutMainnetDiff;
 }
