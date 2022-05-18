@@ -28,7 +28,6 @@ public class Channel {
     @NonNull
     private String channelId;
 
-    @Id
     @Column(name = "zone_counerparty")
     @NonNull
     private String counterpartyZone;

@@ -7,5 +7,4 @@ public class ChannelKey implements Serializable {
     private String clientId;
     private String connectionId;
     private String channelId;
-    private String counterpartyZone;
 }
