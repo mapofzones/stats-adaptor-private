@@ -5,6 +5,7 @@ import com.mapofzones.adaptor.data.entities.*;
 import com.mapofzones.adaptor.data.repository.*;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,10 +20,11 @@ public class Processor {
     private final FtChannelRepository ftChannelRepository;
     private final FtChannelGroupsRepository ftChannelGroupsRepository;
     private final ZoneStatusRepository zoneStatusRepository;
+    private final ProcedureCallerRepository procedureCallerRepository;
 
     public Processor(HeaderRepository headerRepository, ZonesStatsRepository zonesStatsRepository, GraphRepository graphRepository,
                      ChannelRepository channelRepository, FtChannelRepository ftChannelRepository, FtChannelGroupsRepository ftChannelGroupsRepository,
-                     ZoneStatusRepository zoneStatusRepository) {
+                     ZoneStatusRepository zoneStatusRepository, ProcedureCallerRepository procedureCallerRepository) {
         this.headerRepository = headerRepository;
         this.zonesStatsRepository = zonesStatsRepository;
         this.graphRepository = graphRepository;
@@ -30,63 +32,72 @@ public class Processor {
         this.ftChannelRepository = ftChannelRepository;
         this.ftChannelGroupsRepository = ftChannelGroupsRepository;
         this.zoneStatusRepository = zoneStatusRepository;
+        this.procedureCallerRepository = procedureCallerRepository;
     }
 
     public void doScript() {
         System.out.println("Starting...");
 
-        System.out.println("ready to get headers");
-        List<Header> headers = new ArrayList<>();
-        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, true));
-        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, true));
-        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP, true));
-        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, false));
-        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, false));
-        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP, false));
-        System.out.println("ready to save headers");
-        headerRepository.saveAll(headers);
-        System.out.println("Header adaptor finished!");
 
-        System.out.println("ready to get zones_stats");
-        List<ZoneStats> zonesStats = zonesStatsRepository.getZonesStatsByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, false);
-        zonesStats.addAll(zonesStatsRepository.getZonesStatsByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, false));
-        zonesStats.addAll(zonesStatsRepository.getZonesStatsByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP, false));
-        System.out.println("ready to save zones_stats");
-        zonesStatsRepository.saveAll(zonesStats);
-        System.out.println("zones_stats adaptor finished!");
+        Timestamp currentTimestamp = procedureCallerRepository.getCurrentTimestamp();
+        System.out.println(currentTimestamp);
+        String s = procedureCallerRepository.updateBlockchainsHourlyStats2(currentTimestamp, TimeframeConstants.DAY);
+        System.out.println(s);
 
-        System.out.println("ready to get graphs");
-        List<Graph> graphs = graphRepository.getGraphsByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, false);
-        graphs.addAll(graphRepository.getGraphsByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, false));
-        graphs.addAll(graphRepository.getGraphsByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP, false));
-        System.out.println("ready to save graphs");
-        graphRepository.saveAll(graphs);
-        System.out.println("graphs adaptor finished!");
+//        System.out.println("ready to get headers");
+//        List<Header> headers = new ArrayList<>();
+//        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, true));
+//        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, true));
+//        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP, true));
+//        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, false));
+//        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, false));
+//        headers.add(headerRepository.getHeaderByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP, false));
+//        System.out.println("ready to save headers");
+//        headerRepository.saveAll(headers);
+//        System.out.println("Header adaptor finished!");
+//
+//        System.out.println("ready to get zones_stats");
+//        List<ZoneStats> zonesStats = zonesStatsRepository.getZonesStatsByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, false);
+//        zonesStats.addAll(zonesStatsRepository.getZonesStatsByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, false));
+//        zonesStats.addAll(zonesStatsRepository.getZonesStatsByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP, false));
+//        System.out.println("ready to save zones_stats");
+//        zonesStatsRepository.saveAll(zonesStats);
+//        System.out.println("zones_stats adaptor finished!");
+//
+//        System.out.println("ready to get graphs");
+//        List<Graph> graphs = graphRepository.getGraphsByTimeframe(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, false);
+//        graphs.addAll(graphRepository.getGraphsByTimeframe(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, false));
+//        graphs.addAll(graphRepository.getGraphsByTimeframe(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP, false));
+//        System.out.println("ready to save graphs");
+//        graphRepository.saveAll(graphs);
+//        System.out.println("graphs adaptor finished!");
+//
+//        System.out.println("ready to get channels");
+//        List<Channel> channels = channelRepository.getChannelsStats();
+//        System.out.println("ready to save channels");
+//        channelRepository.saveAll(channels);
+//        System.out.println("channels adaptor finished!");
+//
+//        System.out.println("ready to get ft channels");
+//        List<FtChannel> ftChannels = ftChannelRepository.getFtChannelsStats(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, false);
+//        ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, false));
+//        ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP, false));
+//        System.out.println("ready to save ft channels");
+//        ftChannelRepository.saveAll(ftChannels);
+//        System.out.println("ft channels adaptor finished!");
+//
+//        System.out.println("ready to get ft channels groups");
+//        List<ZoneStatus> zoneStatusesList = zoneStatusRepository.getZoneStatuses();
+//        Map<String, ZoneStatus> zoneStatuses = new HashMap<>();
+//        for (ZoneStatus zoneStatus: zoneStatusesList) {
+//            zoneStatuses.put(zoneStatus.getZone(), zoneStatus);
+//        }
+//        List<FtChannelGroup> ftChannelGroups = getFtChannelGroups(ftChannels, zoneStatuses);
+//        System.out.println("ready to save ft channels groups");
+//        ftChannelGroupsRepository.saveAll(ftChannelGroups);
+//        System.out.println("ft channels groups adaptor finished!");
 
-        System.out.println("ready to get channels");
-        List<Channel> channels = channelRepository.getChannelsStats();
-        System.out.println("ready to save channels");
-        channelRepository.saveAll(channels);
-        System.out.println("channels adaptor finished!");
 
-        System.out.println("ready to get ft channels");
-        List<FtChannel> ftChannels = ftChannelRepository.getFtChannelsStats(TimeframeConstants.DAY, TimeframeConstants.DAY_STEP, false);
-        ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.WEEK, TimeframeConstants.WEEK_STEP, false));
-        ftChannels.addAll(ftChannelRepository.getFtChannelsStats(TimeframeConstants.MONTH, TimeframeConstants.MONTH_STEP, false));
-        System.out.println("ready to save ft channels");
-        ftChannelRepository.saveAll(ftChannels);
-        System.out.println("ft channels adaptor finished!");
-
-        System.out.println("ready to get ft channels groups");
-        List<ZoneStatus> zoneStatusesList = zoneStatusRepository.getZoneStatuses();
-        Map<String, ZoneStatus> zoneStatuses = new HashMap<>();
-        for (ZoneStatus zoneStatus: zoneStatusesList) {
-            zoneStatuses.put(zoneStatus.getZone(), zoneStatus);
-        }
-        List<FtChannelGroup> ftChannelGroups = getFtChannelGroups(ftChannels, zoneStatuses);
-        System.out.println("ready to save ft channels groups");
-        ftChannelGroupsRepository.saveAll(ftChannelGroups);
-        System.out.println("ft channels groups adaptor finished!");
 
         System.out.println("Finished!");
         System.out.println("---------------");
