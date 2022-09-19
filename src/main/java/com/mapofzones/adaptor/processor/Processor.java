@@ -21,10 +21,8 @@ public class Processor {
     @Transactional
     public void doScript() {
         log.info("Starting...");
-        Timestamp currentTimestamp = customProcedureRepository.getCurrentTimestamp();
-        log.info(currentTimestamp.toString());
-        String s = customProcedureRepository.updateBlockchainsHourlyStats(currentTimestamp, TimeframeConstants.DAY);
-        log.info(s);
+        String recalcResult = customProcedureRepository.updateFlatTablesCalcs();
+        log.info(recalcResult);
         log.info("Finished!");
         log.info("---------------");
     }

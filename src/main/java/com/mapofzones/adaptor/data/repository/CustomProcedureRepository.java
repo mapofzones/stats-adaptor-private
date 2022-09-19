@@ -3,7 +3,6 @@ package com.mapofzones.adaptor.data.repository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import java.sql.Timestamp;
 
 @Repository
 public class CustomProcedureRepository {
@@ -14,16 +13,9 @@ public class CustomProcedureRepository {
         this.entityManager = entityManager;
     }
 
-    public Timestamp getCurrentTimestamp() {
-        return (Timestamp) entityManager
-                .createNativeQuery("select CURRENT_TIMESTAMP at time zone 'utc' as timestamp;", Timestamp.class).getSingleResult();
-    }
-
-    public String updateBlockchainsHourlyStats(Timestamp requestTimestamp, Integer periodInHours) {
+    public String updateFlatTablesCalcs() {
         return (String) entityManager
-                .createNativeQuery("CALL update_blockchains_hourly_stats(?1, ?2);", String.class)
-                .setParameter(1, requestTimestamp)
-                .setParameter(2, periodInHours)
+                .createNativeQuery("public.update_flat_tables_calcs(now()::timestamp without time zone);", String.class)
                 .getSingleResult();
     }
 }
