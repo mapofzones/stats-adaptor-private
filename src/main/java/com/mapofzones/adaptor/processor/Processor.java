@@ -21,13 +21,7 @@ public class Processor {
     @Transactional
     public void doScript() {
         log.info("Starting...");
-        boolean result = customProcedureRepository.updateBlockchainsHourlyStats();
-
-        if (result)
-            log.info("Function success");
-        else
-            log.warn("Function fail");
-
+        customProcedureRepository.updateBlockchainsHourlyStats();
         log.info("Finished!");
         log.info("---------------");
     }

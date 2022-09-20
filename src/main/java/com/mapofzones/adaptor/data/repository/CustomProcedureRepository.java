@@ -23,13 +23,10 @@ public class CustomProcedureRepository {
 //                .execute();
 //    }
 
-    public boolean updateBlockchainsHourlyStats() {
-        return entityManager
-                .createStoredProcedureQuery("update_blockchains_hourly_stats")
-                .setParameter(1, "now()::timestamp without time zone")
-//                .setParameter("request_timestamp", requestTimestamp)
-//                .setParameter("period_in_hours", periodInHours)
-                .execute();
+    public void updateBlockchainsHourlyStats() {
+        entityManager
+            .createNativeQuery("public.update_flat_tables_calcs(now()::timestamp without time zone);")
+            .executeUpdate();
     }
 
 }
