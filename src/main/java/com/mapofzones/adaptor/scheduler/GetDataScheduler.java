@@ -13,7 +13,7 @@ public class GetDataScheduler {
         this.processor = processor;
     }
 
-    @Scheduled(fixedDelayString = "${adaptor.sync-time}", initialDelay = 10000)
+    @Scheduled(fixedDelayString = "${adaptor.sync-time}", initialDelay = 1)
     public void callDownloader() {
         processor.doScript();
     }

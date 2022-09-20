@@ -14,19 +14,13 @@ public class CustomProcedureRepository {
         this.entityManager = entityManager;
     }
 
-    //public boolean updateBlockchainsHourlyStats(Timestamp requestTimestamp, Integer periodInHours) {
-//    public boolean updateBlockchainsHourlyStats() {
-//        return entityManager
-//                .createNamedStoredProcedureQuery("update_blockchains_hourly_stats")
-////                .setParameter("request_timestamp", requestTimestamp)
-////                .setParameter("period_in_hours", periodInHours)
-//                .execute();
-//    }
-
     public void updateBlockchainsHourlyStats() {
-        entityManager
-            .createNativeQuery("public.update_flat_tables_calcs(now()::timestamp without time zone);")
-            .executeUpdate();
-    }
+        Timestamp timestamp = (Timestamp) entityManager.createNativeQuery("SELECT now();").getSingleResult();
 
+        entityManager
+                .createNativeQuery("CALL update_blockchains_hourly_stats(?1, ?2);")
+                .setParameter(1, timestamp)
+                .setParameter(2, 720)
+                .getSingleResult();
+    }
 }
