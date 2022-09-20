@@ -15,11 +15,21 @@ public class CustomProcedureRepository {
     }
 
     //public boolean updateBlockchainsHourlyStats(Timestamp requestTimestamp, Integer periodInHours) {
+//    public boolean updateBlockchainsHourlyStats() {
+//        return entityManager
+//                .createNamedStoredProcedureQuery("update_blockchains_hourly_stats")
+////                .setParameter("request_timestamp", requestTimestamp)
+////                .setParameter("period_in_hours", periodInHours)
+//                .execute();
+//    }
+
     public boolean updateBlockchainsHourlyStats() {
         return entityManager
-                .createNamedStoredProcedureQuery("update_blockchains_hourly_stats")
+                .createStoredProcedureQuery("update_blockchains_hourly_stats")
+                .setParameter(1, "now()::timestamp without time zone")
 //                .setParameter("request_timestamp", requestTimestamp)
 //                .setParameter("period_in_hours", periodInHours)
                 .execute();
     }
+
 }
