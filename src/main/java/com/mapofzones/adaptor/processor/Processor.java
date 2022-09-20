@@ -21,8 +21,13 @@ public class Processor {
     @Transactional
     public void doScript() {
         log.info("Starting...");
-        String recalcResult = customProcedureRepository.updateFlatTablesCalcs();
-        log.info(recalcResult);
+        boolean result = customProcedureRepository.updateBlockchainsHourlyStats(currentTimestamp, TimeframeConstants.DAY);
+
+        if (result)
+            log.info("Function success");
+        else
+            log.warn("Function fail");
+
         log.info("Finished!");
         log.info("---------------");
     }

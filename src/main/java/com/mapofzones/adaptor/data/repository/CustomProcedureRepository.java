@@ -3,6 +3,7 @@ package com.mapofzones.adaptor.data.repository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.sql.Timestamp;
 
 @Repository
 public class CustomProcedureRepository {
@@ -13,9 +14,11 @@ public class CustomProcedureRepository {
         this.entityManager = entityManager;
     }
 
-    public String updateFlatTablesCalcs() {
-        return (String) entityManager
-                .createNativeQuery("public.update_flat_tables_calcs(now()::timestamp without time zone);", String.class)
-                .getSingleResult();
+    public boolean updateBlockchainsHourlyStats(Timestamp requestTimestamp, Integer periodInHours) {
+        return entityManager
+                .createNamedStoredProcedureQuery("update_blockchains_hourly_stats")
+                .setParameter("request_timestamp", requestTimestamp)
+                .setParameter("period_in_hours", periodInHours)
+                .execute();
     }
 }
