@@ -21,7 +21,7 @@ public class Processor {
     @Transactional
     public void doScript() {
         log.info("Starting...");
-        boolean result = customProcedureRepository.updateBlockchainsHourlyStats(currentTimestamp, TimeframeConstants.DAY);
+        boolean result = customProcedureRepository.updateBlockchainsHourlyStats();
 
         if (result)
             log.info("Function success");

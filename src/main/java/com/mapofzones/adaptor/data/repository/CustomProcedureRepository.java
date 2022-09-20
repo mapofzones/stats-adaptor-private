@@ -14,11 +14,12 @@ public class CustomProcedureRepository {
         this.entityManager = entityManager;
     }
 
-    public boolean updateBlockchainsHourlyStats(Timestamp requestTimestamp, Integer periodInHours) {
+    //public boolean updateBlockchainsHourlyStats(Timestamp requestTimestamp, Integer periodInHours) {
+    public boolean updateBlockchainsHourlyStats() {
         return entityManager
                 .createNamedStoredProcedureQuery("update_blockchains_hourly_stats")
-                .setParameter("request_timestamp", requestTimestamp)
-                .setParameter("period_in_hours", periodInHours)
+//                .setParameter("request_timestamp", requestTimestamp)
+//                .setParameter("period_in_hours", periodInHours)
                 .execute();
     }
 }
