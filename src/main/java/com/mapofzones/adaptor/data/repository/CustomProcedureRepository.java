@@ -1,26 +1,18 @@
 package com.mapofzones.adaptor.data.repository;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.EntityManager;
-import java.sql.Timestamp;
 
 @Repository
 public class CustomProcedureRepository {
 
-    private final EntityManager entityManager;
+    private final JdbcTemplate jdbcTemplate;
 
-    public CustomProcedureRepository(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public CustomProcedureRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     public void updateBlockchainsHourlyStats() {
-        Timestamp timestamp = (Timestamp) entityManager.createNativeQuery("SELECT now();").getSingleResult();
-
-        entityManager
-                .createNativeQuery("CALL update_blockchains_hourly_stats(?1, ?2);")
-                .setParameter(1, timestamp)
-                .setParameter(2, 720)
-                .getSingleResult();
+        jdbcTemplate.execute("CALL update_blockchains_hourly_stats(now()::timestamp without time zone, 720);");
     }
 }
