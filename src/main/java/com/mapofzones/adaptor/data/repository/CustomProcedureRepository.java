@@ -12,7 +12,7 @@ public class CustomProcedureRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void updateBlockchainsHourlyStats() {
-        jdbcTemplate.execute("CALL update_blockchains_hourly_stats(now()::timestamp without time zone, 720);");
+    public void updateFlatTablesStats() {
+        jdbcTemplate.execute("CALL public.update_flat_tables_calcs(now()::timestamp without time zone);");
     }
 }
