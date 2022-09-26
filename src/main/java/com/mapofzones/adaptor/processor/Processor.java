@@ -19,6 +19,8 @@ public class Processor {
     public void doScript() {
         log.info("Starting...");
         customProcedureRepository.updateFlatTablesStats();
+        customProcedureRepository.executeBlockchainCosmoshubStub();
+        customProcedureRepository.executeTokenCosmoshubStub();
         log.info("Finished!");
         log.info("---------------");
     }
