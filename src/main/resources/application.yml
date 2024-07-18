@@ -3,7 +3,7 @@ adaptor:
 
 commands:
   update-flat-tables:
-    sync-time: 10000
+    sync-time: 15000
   
   update_blockchain_stats_from_ibc:
     sync-time: 3600000
