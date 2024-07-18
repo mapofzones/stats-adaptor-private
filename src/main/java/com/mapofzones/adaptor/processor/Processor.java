@@ -16,12 +16,20 @@ public class Processor {
     }
 
     @Transactional
-    public void doScript() {
-        log.info("Starting...");
+    public void updateFlatTables() {
+        System.out.println("Starting running update flat tables");
         customProcedureRepository.updateFlatTablesStats();
         customProcedureRepository.executeBlockchainCosmoshubStub();
         customProcedureRepository.executeTokenCosmoshubStub();
-        log.info("Finished!");
-        log.info("---------------");
+        System.out.println("Finished updating flat tables!");
+        System.out.println("---------------");
+    }
+
+    @Transactional
+    public void updateBlockchainStatsFromIbc() {
+        System.out.println("Starting running update blockchain stats from ibc");
+        customProcedureRepository.updateBlockchainStatsFromIbc();
+        System.out.println("Finished updating blockchain stats from ibc!");
+        System.out.println("---------------");
     }
 }

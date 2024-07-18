@@ -1,20 +1,62 @@
 package com.mapofzones.adaptor.scheduler;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.SchedulingConfigurer;
+import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import com.mapofzones.adaptor.processor.Processor;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
-@Component
-public class GetDataScheduler {
+@Configuration
+@EnableScheduling
+public class GetDataScheduler implements SchedulingConfigurer {
 
     private final Processor processor;
+
+    @Value("${command-to-run:NOTSET}")
+    private String commandToRun;
+
+    @Value("${commands.update-flat-tables.sync-time}")
+    private String updateFlatTablesSyncTime;
+
+    @Value("${commands.update_blockchain_stats_from_ibc.sync-time}")
+    private String updateBlockchainStatsSyncTime;
 
     public GetDataScheduler(Processor processor) {
         this.processor = processor;
     }
 
-    @Scheduled(fixedDelayString = "${adaptor.sync-time}", initialDelay = 1)
-    public void callDownloader() {
-        processor.doScript();
+    @Override
+    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+        switch (commandToRun) {
+            case "update-flat-tables":
+                updateFlatTablesScheduler(taskRegistrar);
+                break;
+            case "update_blockchain_stats_from_ibc":
+                updateBlockchainStatsFromIbcScheduler(taskRegistrar);
+                break;
+            default:
+                System.out.println("No matching command-to-run value. Make sure to set it in the configurations.");
+                System.out.println("Available commands: update-flat-tables, update_blockchain_stats_from_ibc");
+                System.exit(1);
+        }
+    }
+
+    public void updateFlatTablesScheduler(ScheduledTaskRegistrar taskRegistrar) {
+        taskRegistrar.addFixedDelayTask(
+            () -> {
+                processor.updateFlatTables();
+            },
+            Long.parseLong(updateFlatTablesSyncTime)
+        );
+    }
+
+    public void updateBlockchainStatsFromIbcScheduler(ScheduledTaskRegistrar taskRegistrar) {
+        taskRegistrar.addFixedDelayTask(
+            () -> {
+                processor.updateBlockchainStatsFromIbc();
+            },
+            Long.parseLong(updateBlockchainStatsSyncTime)
+        );
     }
 }

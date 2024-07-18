@@ -1,6 +1,13 @@
 adaptor:
   sync-time: 10000
 
+commands:
+  update-flat-tables:
+    sync-time: 10000
+  
+  update_blockchain_stats_from_ibc:
+    sync-time: 3600000
+
 spring:
   main:
     web-application-type: none
