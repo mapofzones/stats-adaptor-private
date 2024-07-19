@@ -52,11 +52,12 @@ public class GetDataScheduler implements SchedulingConfigurer {
     }
 
     public void updateBlockchainStatsFromIbcScheduler(ScheduledTaskRegistrar taskRegistrar) {
-        taskRegistrar.addFixedDelayTask(
+        processor.updateBlockchainStatsFromIbc();
+        taskRegistrar.addCronTask(
             () -> {
                 processor.updateBlockchainStatsFromIbc();
             },
-            Long.parseLong(updateBlockchainStatsSyncTime)
+            this.updateBlockchainStatsSyncTime
         );
     }
 }

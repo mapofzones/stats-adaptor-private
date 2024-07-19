@@ -13,6 +13,7 @@ public class CustomProcedureRepository {
     }
 
     public void updateFlatTablesStats() {
+        jdbcTemplate.execute("CALL public.update_flat_tables_blockchains();");
         jdbcTemplate.execute("CALL public.update_flat_tables_calcs(now()::timestamp without time zone);");
     }
 
