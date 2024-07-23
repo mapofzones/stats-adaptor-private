@@ -18,7 +18,7 @@ public class CustomProcedureRepository {
     }
 
     public void updateBlockchainStatsFromIbc() {
-        jdbcTemplate.execute("CALL public.update_blockchain_stats_from_ibc();");
+        jdbcTemplate.execute("CALL public.update_flat_tables_ibc_txs(date_trunc('day', now())::timestamp without time zone);");
     }
 
     public void executeBlockchainCosmoshubStub() {
