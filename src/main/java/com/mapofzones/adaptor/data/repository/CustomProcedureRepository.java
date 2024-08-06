@@ -22,7 +22,7 @@ public class CustomProcedureRepository {
     }
 
     public void updateAlltimeIbcStats() {
-        jdbcTemplate.execute("REFRESH MATERIALIZED VIEW mv_ibc_transfer_stats;");
+        jdbcTemplate.execute("REFRESH MATERIALIZED VIEW flat.mv_ibc_transfer_stats;");
     }
 
     public void executeBlockchainCosmoshubStub() {
