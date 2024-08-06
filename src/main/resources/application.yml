@@ -11,7 +11,7 @@ commands:
     
   update_all_time_ibc_stats:
     # every one hour
-    sync-time: 3600000
+    sync-time: 0 0 * * * ?
 
 spring:
   main:

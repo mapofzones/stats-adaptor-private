@@ -69,11 +69,11 @@ public class GetDataScheduler implements SchedulingConfigurer {
 
     public void updateAlltimeIbcStatsScheduler(ScheduledTaskRegistrar taskRegistrar) {
         processor.updateAlltimeIbcStats();
-        taskRegistrar.addFixedDelayTask(
+        taskRegistrar.addCronTask(
             () -> {
                 processor.updateAlltimeIbcStats();
             },
-            Long.parseLong(updateAllTimeIbcStats)
+            this.updateAllTimeIbcStats
         );
     }
 }
