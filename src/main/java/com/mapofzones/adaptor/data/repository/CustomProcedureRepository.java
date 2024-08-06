@@ -21,6 +21,10 @@ public class CustomProcedureRepository {
         jdbcTemplate.execute("CALL public.update_flat_tables_ibc_txs(date_trunc('day', now())::timestamp without time zone);");
     }
 
+    public void updateAlltimeIbcStats() {
+        jdbcTemplate.execute("REFRESH MATERIALIZED VIEW mv_ibc_transfer_stats;");
+    }
+
     public void executeBlockchainCosmoshubStub() {
         jdbcTemplate.execute("" +
                 "UPDATE\n" +

@@ -32,4 +32,12 @@ public class Processor {
         System.out.println("Finished updating blockchain stats from ibc!");
         System.out.println("---------------");
     }
+
+    @Transactional
+    public void updateAlltimeIbcStats() {
+        System.out.println("Starting running update alltime ibc stats");
+        customProcedureRepository.updateAlltimeIbcStats();
+        System.out.println("Finished updating alltime blockchain stats from ibc!");
+        System.out.println("---------------");
+    }
 }

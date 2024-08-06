@@ -35,6 +35,9 @@ public class GetDataScheduler implements SchedulingConfigurer {
             case "update_blockchain_stats_from_ibc":
                 updateBlockchainStatsFromIbcScheduler(taskRegistrar);
                 break;
+            case "update_all_time_ibc_stats":
+                updateAlltimeIbcStatsScheduler(taskRegistrar);
+                break;
             default:
                 System.out.println("No matching command-to-run value. Make sure to set it in the configurations.");
                 System.out.println("Available commands: update-flat-tables, update_blockchain_stats_from_ibc");
@@ -58,6 +61,16 @@ public class GetDataScheduler implements SchedulingConfigurer {
                 processor.updateBlockchainStatsFromIbc();
             },
             this.updateBlockchainStatsSyncTime
+        );
+    }
+
+    public void updateAlltimeIbcStatsScheduler(ScheduledTaskRegistrar taskRegistrar) {
+        processor.updateAlltimeIbcStats();
+        taskRegistrar.addFixedDelayTask(
+            () -> {
+                processor.updateAlltimeIbcStats();
+            },
+            Long.parseLong(updateFlatTablesSyncTime)
         );
     }
 }

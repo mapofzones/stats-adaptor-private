@@ -8,6 +8,10 @@ commands:
   update_blockchain_stats_from_ibc:
     # 00:10 UTC every day
     sync-time: "10 0 0 * * ?"
+    
+  update_all_time_ibc_stats:
+    # every one hour
+    sync-time: 3600000
 
 spring:
   main:
