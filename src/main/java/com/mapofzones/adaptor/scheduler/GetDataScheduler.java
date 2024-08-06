@@ -22,6 +22,9 @@ public class GetDataScheduler implements SchedulingConfigurer {
     @Value("${commands.update_blockchain_stats_from_ibc.sync-time}")
     private String updateBlockchainStatsSyncTime;
 
+    @Value("${commands.update_all_time_ibc_stats.sync-time}")
+    private String updateAllTimeIbcStats;
+
     public GetDataScheduler(Processor processor) {
         this.processor = processor;
     }
@@ -70,7 +73,7 @@ public class GetDataScheduler implements SchedulingConfigurer {
             () -> {
                 processor.updateAlltimeIbcStats();
             },
-            Long.parseLong(updateFlatTablesSyncTime)
+            Long.parseLong(updateAllTimeIbcStats)
         );
     }
 }
