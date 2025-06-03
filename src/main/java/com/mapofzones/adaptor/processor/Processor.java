@@ -19,8 +19,8 @@ public class Processor {
     public void updateFlatTables() {
         System.out.println("Starting running update flat tables");
         customProcedureRepository.updateFlatTablesStats();
-        customProcedureRepository.executeBlockchainCosmoshubStub();
-        customProcedureRepository.executeTokenCosmoshubStub();
+        //customProcedureRepository.executeBlockchainCosmoshubStub();
+        //customProcedureRepository.executeTokenCosmoshubStub();
         System.out.println("Finished updating flat tables!");
         System.out.println("---------------");
     }
